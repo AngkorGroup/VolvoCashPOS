@@ -4,6 +4,7 @@ import {
   Text,
   ViewStyle,
   StyleSheet,
+  TextStyle,
   View,
 } from 'react-native';
 import { unit } from 'utils/responsive';
@@ -12,10 +13,11 @@ import { theme } from 'utils/styles';
 interface ButtonProps {
   onPress(): void;
   title: string;
-  style?: ViewStyle;
+  style?: ViewStyle | Array<ViewStyle>;
   loading?: boolean;
   disabled?: boolean;
   icon?: JSX.Element;
+  textStyle?: TextStyle | Array<TextStyle>;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -25,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
   loading,
   disabled,
   icon,
+  textStyle,
 }) => {
   const buttonStyle = [styles.container, style];
   const buttonTextStyle = [styles.buttonText] as any[];
@@ -36,6 +39,11 @@ const Button: React.FC<ButtonProps> = ({
     buttonStyle.push(styles.containerWithIcon);
     buttonTextStyle.push(styles.textWithIcon);
   }
+
+  if (textStyle) {
+    buttonTextStyle.push(textStyle);
+  }
+
   return (
     <TouchableOpacity
       onPress={onPress}
