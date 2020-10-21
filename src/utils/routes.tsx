@@ -1,6 +1,7 @@
 export const LOGIN_STACK = 'LOGIN_STACK';
 export const LOGIN_SCREEN = 'LOGIN_SCREEN';
 
+export const HOME_SCREEN = 'HOME_SCREEN';
 export const APP_TAB = 'APP_TAB';
 export const CARD_STACK = 'CARD_STACK';
 export const CARD_LIST_SCREEN = 'CARD_LIST_SCREEN';

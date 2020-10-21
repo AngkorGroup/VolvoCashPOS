@@ -11,6 +11,7 @@ export const palette = {
   sky: '#BADCE6',
   fog: '#d8d7d5',
   raspberry: '#D84451',
+  orange: '#DD7610',
 };
 
 export const theme = {
