@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { unit } from 'utils/responsive';
 import { theme, palette } from 'utils/styles';
 
-var width = Dimensions.get('window').width;
+const width = Dimensions.get('window').width;
 
 type Mode = 'positive' | 'negative';
 
