@@ -2,8 +2,44 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>VolvoBroadProDigital.otf</string>
+		<string>VolvoNovum-Bold.otf</string>
+		<string>VolvoNovum-BoldItalic.otf</string>
+		<string>VolvoNovum-Italic.otf</string>
+		<string>VolvoNovum-Light.otf</string>
+		<string>VolvoNovum-LightItalic.otf</string>
+		<string>VolvoNovum-Medium.otf</string>
+		<string>VolvoNovum-MediumItalic.otf</string>
+		<string>VolvoNovum-Regular.otf</string>
+		<string>VolvoNovum-SemiLight.otf</string>
+		<string>VolvoNovum-SemiLightItalic.otf</string>
+		<string>Zocial.ttf</string>
+	</array>
+	<key>NSHumanReadableCopyright</key>
+	<array>
+		<string></string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDisplayName</key>
 	<string>VolvoCashPOS</string>
 	<key>CFBundleExecutable</key>
@@ -51,6 +87,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

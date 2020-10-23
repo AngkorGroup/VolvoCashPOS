@@ -17,6 +17,33 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* VolvoCashPOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* VolvoCashPOSTests.m */; };
 		554D8C1557F2C5798E73C21D /* libPods-VolvoCashPOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301DBC47FE274AD23061CBAE /* libPods-VolvoCashPOS.a */; };
+		6042789E25438F0600FBA5BA /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042788E25438F0500FBA5BA /* EvilIcons.ttf */; };
+		6042789F25438F0600FBA5BA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042788F25438F0500FBA5BA /* Foundation.ttf */; };
+		604278A025438F0600FBA5BA /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789025438F0500FBA5BA /* FontAwesome5_Solid.ttf */; };
+		604278A125438F0600FBA5BA /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789125438F0500FBA5BA /* SimpleLineIcons.ttf */; };
+		604278A225438F0600FBA5BA /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789225438F0500FBA5BA /* AntDesign.ttf */; };
+		604278A325438F0600FBA5BA /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789325438F0500FBA5BA /* Zocial.ttf */; };
+		604278A425438F0600FBA5BA /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789425438F0500FBA5BA /* Fontisto.ttf */; };
+		604278A525438F0600FBA5BA /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789525438F0500FBA5BA /* Ionicons.ttf */; };
+		604278A625438F0600FBA5BA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789625438F0500FBA5BA /* FontAwesome5_Brands.ttf */; };
+		604278A725438F0600FBA5BA /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789725438F0500FBA5BA /* Feather.ttf */; };
+		604278A825438F0600FBA5BA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789825438F0600FBA5BA /* FontAwesome.ttf */; };
+		604278A925438F0600FBA5BA /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789925438F0600FBA5BA /* FontAwesome5_Regular.ttf */; };
+		604278AA25438F0600FBA5BA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789A25438F0600FBA5BA /* Octicons.ttf */; };
+		604278AB25438F0600FBA5BA /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789B25438F0600FBA5BA /* MaterialIcons.ttf */; };
+		604278AC25438F0600FBA5BA /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789C25438F0600FBA5BA /* MaterialCommunityIcons.ttf */; };
+		604278AD25438F0600FBA5BA /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789D25438F0600FBA5BA /* Entypo.ttf */; };
+		60E5892625439CC6009FC690 /* VolvoBroadProDigital.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B72543988000FBA5BA /* VolvoBroadProDigital.otf */; };
+		60E5892725439CCA009FC690 /* VolvoNovum-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278AE2543987F00FBA5BA /* VolvoNovum-Bold.otf */; };
+		60E5892825439CE3009FC690 /* VolvoNovum-SemiLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B22543987F00FBA5BA /* VolvoNovum-SemiLightItalic.otf */; };
+		60E5892925439CE7009FC690 /* VolvoNovum-SemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B12543987F00FBA5BA /* VolvoNovum-SemiLight.otf */; };
+		60E5892A25439CEA009FC690 /* VolvoNovum-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B62543988000FBA5BA /* VolvoNovum-Regular.otf */; };
+		60E5892B25439CED009FC690 /* VolvoNovum-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B52543988000FBA5BA /* VolvoNovum-MediumItalic.otf */; };
+		60E5892C25439CF3009FC690 /* VolvoNovum-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B42543988000FBA5BA /* VolvoNovum-Italic.otf */; };
+		60E5892D25439CF3009FC690 /* VolvoNovum-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B82543988000FBA5BA /* VolvoNovum-Light.otf */; };
+		60E5892E25439CF3009FC690 /* VolvoNovum-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B32543988000FBA5BA /* VolvoNovum-LightItalic.otf */; };
+		60E5892F25439CF3009FC690 /* VolvoNovum-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B02543987F00FBA5BA /* VolvoNovum-Medium.otf */; };
+		60E5893025439CFA009FC690 /* VolvoNovum-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278AF2543987F00FBA5BA /* VolvoNovum-BoldItalic.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8B55EF21E0A58C1AAE387509 /* libPods-VolvoCashPOS-VolvoCashPOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F80ABE68332A367690E6CBE2 /* libPods-VolvoCashPOS-VolvoCashPOSTests.a */; };
 		927CE4C9E8ECC4296B483E63 /* libPods-VolvoCashPOS-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A81654FB416D0996377D6D /* libPods-VolvoCashPOS-tvOS.a */; };
@@ -56,6 +83,33 @@
 		2D02E4901E0B4A5D006451C7 /* VolvoCashPOS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VolvoCashPOS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		301DBC47FE274AD23061CBAE /* libPods-VolvoCashPOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VolvoCashPOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		580E55B0CF3ABB46C0DB6FAB /* Pods-VolvoCashPOS-VolvoCashPOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS-VolvoCashPOSTests.debug.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS-VolvoCashPOSTests/Pods-VolvoCashPOS-VolvoCashPOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6042788E25438F0500FBA5BA /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		6042788F25438F0500FBA5BA /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		6042789025438F0500FBA5BA /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		6042789125438F0500FBA5BA /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		6042789225438F0500FBA5BA /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		6042789325438F0500FBA5BA /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		6042789425438F0500FBA5BA /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		6042789525438F0500FBA5BA /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		6042789625438F0500FBA5BA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		6042789725438F0500FBA5BA /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		6042789825438F0600FBA5BA /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		6042789925438F0600FBA5BA /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		6042789A25438F0600FBA5BA /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		6042789B25438F0600FBA5BA /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		6042789C25438F0600FBA5BA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		6042789D25438F0600FBA5BA /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		604278AE2543987F00FBA5BA /* VolvoNovum-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-Bold.otf"; sourceTree = "<group>"; };
+		604278AF2543987F00FBA5BA /* VolvoNovum-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-BoldItalic.otf"; sourceTree = "<group>"; };
+		604278B02543987F00FBA5BA /* VolvoNovum-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-Medium.otf"; sourceTree = "<group>"; };
+		604278B12543987F00FBA5BA /* VolvoNovum-SemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-SemiLight.otf"; sourceTree = "<group>"; };
+		604278B22543987F00FBA5BA /* VolvoNovum-SemiLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-SemiLightItalic.otf"; sourceTree = "<group>"; };
+		604278B32543988000FBA5BA /* VolvoNovum-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-LightItalic.otf"; sourceTree = "<group>"; };
+		604278B42543988000FBA5BA /* VolvoNovum-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-Italic.otf"; sourceTree = "<group>"; };
+		604278B52543988000FBA5BA /* VolvoNovum-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-MediumItalic.otf"; sourceTree = "<group>"; };
+		604278B62543988000FBA5BA /* VolvoNovum-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-Regular.otf"; sourceTree = "<group>"; };
+		604278B72543988000FBA5BA /* VolvoBroadProDigital.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VolvoBroadProDigital.otf; sourceTree = "<group>"; };
+		604278B82543988000FBA5BA /* VolvoNovum-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-Light.otf"; sourceTree = "<group>"; };
 		631D76A182BC191FD153ACD0 /* Pods-VolvoCashPOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS.release.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS/Pods-VolvoCashPOS.release.xcconfig"; sourceTree = "<group>"; };
 		707BE8F3F7BBC2A8B9244133 /* libPods-VolvoCashPOS-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VolvoCashPOS-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDA0C7A01F830CC9A948D4B /* Pods-VolvoCashPOS-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS-tvOS/Pods-VolvoCashPOS-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +179,7 @@
 		13B07FAE1A68108700A75B9A /* VolvoCashPOS */ = {
 			isa = PBXGroup;
 			children = (
+				6042788D25438DD000FBA5BA /* Fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -161,8 +216,41 @@
 				06AA6390331E804E3B00B9C5 /* Pods-VolvoCashPOS-tvOSTests.debug.xcconfig */,
 				F6433AD45D824644807A9985 /* Pods-VolvoCashPOS-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		6042788D25438DD000FBA5BA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				604278B72543988000FBA5BA /* VolvoBroadProDigital.otf */,
+				604278AE2543987F00FBA5BA /* VolvoNovum-Bold.otf */,
+				604278AF2543987F00FBA5BA /* VolvoNovum-BoldItalic.otf */,
+				604278B42543988000FBA5BA /* VolvoNovum-Italic.otf */,
+				604278B82543988000FBA5BA /* VolvoNovum-Light.otf */,
+				604278B32543988000FBA5BA /* VolvoNovum-LightItalic.otf */,
+				604278B02543987F00FBA5BA /* VolvoNovum-Medium.otf */,
+				604278B52543988000FBA5BA /* VolvoNovum-MediumItalic.otf */,
+				604278B62543988000FBA5BA /* VolvoNovum-Regular.otf */,
+				604278B12543987F00FBA5BA /* VolvoNovum-SemiLight.otf */,
+				604278B22543987F00FBA5BA /* VolvoNovum-SemiLightItalic.otf */,
+				6042789225438F0500FBA5BA /* AntDesign.ttf */,
+				6042789D25438F0600FBA5BA /* Entypo.ttf */,
+				6042788E25438F0500FBA5BA /* EvilIcons.ttf */,
+				6042789725438F0500FBA5BA /* Feather.ttf */,
+				6042789825438F0600FBA5BA /* FontAwesome.ttf */,
+				6042789625438F0500FBA5BA /* FontAwesome5_Brands.ttf */,
+				6042789925438F0600FBA5BA /* FontAwesome5_Regular.ttf */,
+				6042789025438F0500FBA5BA /* FontAwesome5_Solid.ttf */,
+				6042789425438F0500FBA5BA /* Fontisto.ttf */,
+				6042788F25438F0500FBA5BA /* Foundation.ttf */,
+				6042789525438F0500FBA5BA /* Ionicons.ttf */,
+				6042789C25438F0600FBA5BA /* MaterialCommunityIcons.ttf */,
+				6042789B25438F0600FBA5BA /* MaterialIcons.ttf */,
+				6042789A25438F0600FBA5BA /* Octicons.ttf */,
+				6042789125438F0500FBA5BA /* SimpleLineIcons.ttf */,
+				6042789325438F0500FBA5BA /* Zocial.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -340,8 +428,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E5892825439CE3009FC690 /* VolvoNovum-SemiLightItalic.otf in Resources */,
+				604278A925438F0600FBA5BA /* FontAwesome5_Regular.ttf in Resources */,
+				60E5892E25439CF3009FC690 /* VolvoNovum-LightItalic.otf in Resources */,
+				604278A525438F0600FBA5BA /* Ionicons.ttf in Resources */,
+				60E5892A25439CEA009FC690 /* VolvoNovum-Regular.otf in Resources */,
+				604278A825438F0600FBA5BA /* FontAwesome.ttf in Resources */,
+				604278A425438F0600FBA5BA /* Fontisto.ttf in Resources */,
+				604278A725438F0600FBA5BA /* Feather.ttf in Resources */,
+				604278A325438F0600FBA5BA /* Zocial.ttf in Resources */,
+				60E5892925439CE7009FC690 /* VolvoNovum-SemiLight.otf in Resources */,
+				60E5892C25439CF3009FC690 /* VolvoNovum-Italic.otf in Resources */,
+				604278A025438F0600FBA5BA /* FontAwesome5_Solid.ttf in Resources */,
+				604278AD25438F0600FBA5BA /* Entypo.ttf in Resources */,
+				60E5892F25439CF3009FC690 /* VolvoNovum-Medium.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				604278AB25438F0600FBA5BA /* MaterialIcons.ttf in Resources */,
+				604278A625438F0600FBA5BA /* FontAwesome5_Brands.ttf in Resources */,
+				604278A225438F0600FBA5BA /* AntDesign.ttf in Resources */,
+				604278AA25438F0600FBA5BA /* Octicons.ttf in Resources */,
+				6042789F25438F0600FBA5BA /* Foundation.ttf in Resources */,
+				60E5892B25439CED009FC690 /* VolvoNovum-MediumItalic.otf in Resources */,
+				604278AC25438F0600FBA5BA /* MaterialCommunityIcons.ttf in Resources */,
+				6042789E25438F0600FBA5BA /* EvilIcons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				604278A125438F0600FBA5BA /* SimpleLineIcons.ttf in Resources */,
+				60E5892625439CC6009FC690 /* VolvoBroadProDigital.otf in Resources */,
+				60E5892725439CCA009FC690 /* VolvoNovum-Bold.otf in Resources */,
+				60E5893025439CFA009FC690 /* VolvoNovum-BoldItalic.otf in Resources */,
+				60E5892D25439CF3009FC690 /* VolvoNovum-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,10 +557,42 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VolvoCashPOS/Pods-VolvoCashPOS-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,10 +629,42 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VolvoCashPOS-VolvoCashPOSTests/Pods-VolvoCashPOS-VolvoCashPOSTests-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,7 +843,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.angkorgroup.volvocashpos;
 				PRODUCT_NAME = VolvoCashPOS;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -686,7 +865,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.angkorgroup.volvocashpos;
 				PRODUCT_NAME = VolvoCashPOS;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
