@@ -32,6 +32,9 @@ export const theme = {
   background: {
     backgroundColor: Color(palette.sky).alpha(0.1).toString(),
   },
+  loginFormContainer: {
+    backgroundColor: Color(palette.fog).alpha(0.8).toString(),
+  },
   accent: {
     color: palette.ocean,
   },

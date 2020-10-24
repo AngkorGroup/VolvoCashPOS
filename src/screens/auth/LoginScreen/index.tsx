@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import {
-  StyleSheet,
   View,
   KeyboardAvoidingView,
   Text,
@@ -9,7 +8,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import Button from 'components/button/Button';
 import { unit } from 'utils/responsive';
-import { palette, theme } from 'utils/styles';
+import styles from './styles';
 import Input from 'components/input/Input';
 import * as routes from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
@@ -65,62 +64,5 @@ const LoginScreen = () => {
     </FastImage>
   );
 };
-
-const styles = StyleSheet.create({
-  bg: {
-    flex: 1,
-    resizeMode: 'contain',
-    justifyContent: 'center',
-  },
-  safeContainer: {
-    flex: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    position: 'absolute',
-    bottom: unit(100)
-
-  },
-  keyboardContainer: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingTop: unit(50),
-    margin: unit(30),
-  },
-  container: {
-    width: unit(245),
-    height: unit(240),
-    backgroundColor: palette.fog,
-    opacity: 0.8,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderRadius: 30,
-    position: 'relative',
-    marginBottom: unit(40),
-    marginTop: unit(10),
-  },
-  logoContainer: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    left: 0,
-    top: -unit(120),
-    right: 0,
-  },
-  volvoCashLogo: {
-    width: 190,
-    height: 190,
-    flex: 1,
-    resizeMode: 'contain',
-    marginVertical: unit(20),
-  },
-  text: {
-    fontWeight: '700',
-    color: '#16A6C9',
-  },
-});
 
 export default LoginScreen;

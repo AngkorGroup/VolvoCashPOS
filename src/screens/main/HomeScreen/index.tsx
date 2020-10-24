@@ -1,6 +1,6 @@
 import Button from 'components/button/Button';
 import ListItem from 'components/card/ListItem';
-import BackButton from 'components/header/BackButton';
+import ExitButton from 'components/header/ExitButton';
 import Header from 'components/header/Header';
 import Icon from 'components/icon/Icon';
 import Search from 'components/input/Search';
@@ -11,6 +11,8 @@ import styles from './styles';
 import { unit } from 'utils/responsive';
 import movements from 'mocks/movements';
 import { formatDate } from 'utils/moment';
+import { PRESENTIAL_STACK } from 'utils/routes';
+import { useNavigation } from '@react-navigation/native';
 
 type CardDetailTab = 'Presencial' | 'Remoto';
 
@@ -65,18 +67,19 @@ const Movements: React.FC<Movements> = ({ type }) => {
 
 const CardDetailScreen = () => {
   const [tab, setTab] = useState<CardDetailTab>('Presencial');
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <Header
         title={'Bienvenido, Usuario'}
-        alignment="left"
-        leftButton={<BackButton />}
+        alignment="center"
+        rightButton={<ExitButton />}
       />
       <View style={styles.infoContainer}>
         <Button
           title="Cobro Presencial"
-          onPress={() => { }}
+          onPress={() => navigation.navigate(PRESENTIAL_STACK)}
           icon={<Icon family="MaterialIcon" name="qr-code-2" size={unit(50)} />}
         />
         <Button

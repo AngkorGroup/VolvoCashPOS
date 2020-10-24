@@ -6,16 +6,20 @@ export default StyleSheet.create({
   safeContainer: {
     flex: 1,
     ...theme.background,
+    position: 'relative'
   },
   container: {
-    width: unit(245),
-    height: unit(240),
-    ...theme.disabledSurface,
+    flex: 2,
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 30,
-    position: 'relative',
-    marginBottom: unit(40),
-    marginTop: unit(10),
+    margin: unit(30)
+  },
+  input: {
+    width: '100%',
+    marginBottom: unit(20),
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: unit(20),
   },
 });
