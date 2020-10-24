@@ -9,14 +9,17 @@ import {
 import FastImage from 'react-native-fast-image';
 import Button from 'components/button/Button';
 import { unit } from 'utils/responsive';
-import { theme } from 'utils/styles';
+import { palette, theme } from 'utils/styles';
 import Input from 'components/input/Input';
+import * as routes from 'utils/routes';
+import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import { Context as AuthContext } from '../../context/auth';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
   // const { state, signin } = useContext(AuthContext);
   return (
     <FastImage source={require('assets/images/pos-bg.png')} style={styles.bg}>
@@ -44,11 +47,12 @@ const LoginScreen = () => {
               iconName="unlock"
               textContentType="password"
               onChangeText={setPassword}
+              secureTextEntry={true}
             />
             <Text style={styles.text}>Olvidé mi contraseña</Text>
           </KeyboardAvoidingView>
         </View>
-        <View>
+        <View style={styles.buttonContainer}>
           <Button
             title="Ingresar"
             onPress={() => {
@@ -73,6 +77,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: unit(100)
+
+  },
   keyboardContainer: {
     flex: 1,
     justifyContent: 'space-around',
@@ -83,7 +92,8 @@ const styles = StyleSheet.create({
   container: {
     width: unit(245),
     height: unit(240),
-    ...theme.disabledSurface,
+    backgroundColor: palette.fog,
+    opacity: 0.8,
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: 30,
@@ -108,7 +118,7 @@ const styles = StyleSheet.create({
     marginVertical: unit(20),
   },
   text: {
-    // ...theme.small,
+    fontWeight: '700',
     color: '#16A6C9',
   },
 });

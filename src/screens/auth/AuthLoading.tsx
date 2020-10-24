@@ -9,7 +9,7 @@ const RootStack = createStackNavigator();
 
 const AuthLoading = () => {
   // const { state } = React.useContext(AuthContext);
-  const token = true;
+  const token = false;
   return (
     <RootStack.Navigator mode="modal" headerMode="none">
       {/* {!state.token ? ( */}
