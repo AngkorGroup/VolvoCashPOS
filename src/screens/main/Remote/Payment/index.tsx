@@ -5,6 +5,7 @@ import styles from './styles';
 import BackButton from 'components/header/BackButton';
 import Button from 'components/button/Button';
 import ClientModal from 'screens/main/Remote/ClientModal'
+import CardListModal from 'screens/main/Remote/CardModal';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Input from 'components/input/Input';
 import { unit } from 'utils/responsive';
@@ -13,9 +14,10 @@ import { useNavigation } from '@react-navigation/native';
 const PaymentScreen = () => {
   const [amount, setAmount] = useState('');
   const [concept, setConcept] = useState('');
-  const [client, setClient] = useState('');
-  const [card, setCard] = useState('');
+  const [client, setClient] = useState({ id: null, name: '' });
+  const [card, setCard] = useState({ id: null, title: '' });
   const [isCliModalVisible, setIsCliModalVisible] = useState(false);
+  const [isCardModalVisible, setIsCardModalVisible] = useState(false);
 
   const navigation = useNavigation();
 
@@ -30,7 +32,7 @@ const PaymentScreen = () => {
   return (
     <SafeAreaView edges={['bottom']} style={styles.safeContainer}>
       <Header
-        title={'Cobro Presencial'}
+        title={'Cobro Remoto'}
         alignment="center"
         leftButton={<BackButton />}
       />
@@ -44,19 +46,19 @@ const PaymentScreen = () => {
             <View pointerEvents='none'>
               <Input
                 placeholder="Cliente"
-                value={client}
+                value={client.name}
                 onChangeText={() => { }}
                 containerStyle={styles.input}
               />
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {
-            setIsCliModalVisible(true);
+            setIsCardModalVisible(true);
           }}>
             <View pointerEvents='none'>
               <Input
                 placeholder="Tarjeta"
-                value={card}
+                value={card.title}
                 onChangeText={() => { }}
                 containerStyle={styles.input}
               />
@@ -83,7 +85,8 @@ const PaymentScreen = () => {
           />
         </View>
       </View>
-      <ClientModal isVisible={isCliModalVisible} setIsVisible={setIsCliModalVisible} />
+      <ClientModal setClient={setClient} isVisible={isCliModalVisible} setIsVisible={setIsCliModalVisible} />
+      <CardListModal setCard={setCard} isVisible={isCardModalVisible} setIsVisible={setIsCardModalVisible} />
     </SafeAreaView >
   );
 };

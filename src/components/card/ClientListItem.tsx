@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import { unit } from 'utils/responsive';
 import { theme } from 'utils/styles';
 
@@ -8,14 +8,16 @@ const width = Dimensions.get('window').width;
 interface ListItem {
   title: string;
   subtitle: string;
+  onPress(): void;
 }
 
 const ListItem: React.FC<ListItem> = ({
   title,
   subtitle,
+  onPress,
 }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <View>
         <View style={styles.leftContainer}>
           <Text ellipsizeMode={'tail'} numberOfLines={1} style={styles.title}>
@@ -24,7 +26,7 @@ const ListItem: React.FC<ListItem> = ({
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

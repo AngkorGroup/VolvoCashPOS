@@ -12,9 +12,15 @@ import { formatDate } from 'utils/moment';
 interface IClientModal {
   isVisible: boolean;
   setIsVisible: Function;
+  setClient: Function;
 }
 
-const Clients: React.FC<any> = () => {
+interface IClients {
+  setClient: Function;
+  setIsVisible: Function;
+}
+
+const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
   const [query, setQuery] = useState('');
   const [filteredMovements, setFilteredMovements] = useState(movements);
 
@@ -42,10 +48,14 @@ const Clients: React.FC<any> = () => {
         data={filteredMovements}
         keyExtractor={(movement) => movement.id.toString()}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item: movement }) => (
+        renderItem={({ item: client }) => (
           <ListItem
-            title={movement.displayName}
-            subtitle={formatDate(movement.date)}
+            title={client.displayName}
+            subtitle={formatDate(client.date)}
+            onPress={() => {
+              setIsVisible(false);
+              setClient({ id: client.id, name: client.displayName });
+            }}
           />
         )}
         ItemSeparatorComponent={() => <View style={styles.divider} />}
@@ -54,16 +64,22 @@ const Clients: React.FC<any> = () => {
   );
 };
 
-const ClientModal: React.FC<IClientModal> = ({ isVisible, setIsVisible }) => {
+const ClientModal: React.FC<IClientModal> = ({
+  isVisible,
+  setIsVisible,
+  setClient
+}) => {
   return (
     <Modal visible={isVisible} style={styles.container}>
       <Header
         title={'Seleccionar cliente'}
         alignment="left"
-        leftButton={<BackButton onClose={() => { setIsVisible(false); }} />}
+        leftButton={
+          <BackButton onClose={() => { setIsVisible(false); }
+          } />}
       />
       <View style={styles.headerDivider} />
-      <Clients />
+      <Clients setClient={setClient} setIsVisible={setIsVisible} />
     </Modal>
   );
 };
