@@ -4,7 +4,7 @@ import Header from 'components/header/Header';
 import { ActivityIndicator, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { palette } from 'utils/styles';
-import { PRESENTIAL_SUCCESS_SCREEN } from 'utils/routes';
+import { ON_SITE_SUCCESS_SCREEN } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import styles from './styles';
@@ -22,7 +22,7 @@ const TransfersScreen = () => {
     setTimeout(() => {
       setLoading(false);
       console.warn(val.data);
-      navigation.navigate(PRESENTIAL_SUCCESS_SCREEN);
+      navigation.navigate(ON_SITE_SUCCESS_SCREEN);
     }, 1000);
   }
 

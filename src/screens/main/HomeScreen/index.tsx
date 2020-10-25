@@ -11,7 +11,7 @@ import styles from './styles';
 import { unit } from 'utils/responsive';
 import movements from 'mocks/movements';
 import { formatDate } from 'utils/moment';
-import { PRESENTIAL_STACK } from 'utils/routes';
+import { ON_SITE_STACK } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 
 type CardDetailTab = 'Presencial' | 'Remoto';
@@ -79,7 +79,7 @@ const CardDetailScreen = () => {
       <View style={styles.infoContainer}>
         <Button
           title="Cobro Presencial"
-          onPress={() => navigation.navigate(PRESENTIAL_STACK)}
+          onPress={() => navigation.navigate(ON_SITE_STACK)}
           icon={<Icon family="MaterialIcon" name="qr-code-2" size={unit(50)} />}
         />
         <Button
