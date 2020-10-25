@@ -4,9 +4,10 @@ export const LOGIN_SCREEN = 'LOGIN_SCREEN';
 export const HOME_SCREEN = 'HOME_SCREEN';
 export const APP_TAB = 'APP_TAB';
 
-export const PRESENTIAL_STACK = 'PRESENTIAL_STACK';
-export const PRESENTIAL_PAYMENT = 'PRESENTIAL_PAYMENT';
+export const ON_SITE_STACK = 'ON_SITE_STACK';
+export const ON_SITE_PAYMENT = 'ON_SITE_PAYMENT';
 export const QR_SCREEN = 'QR_SCREEN';
+export const ON_SITE_SUCCESS_SCREEN = 'ON_SITE_SUCCESS_SCREEN';
 
 export const CARD_STACK = 'CARD_STACK';
 export const CARD_LIST_SCREEN = 'CARD_LIST_SCREEN';
