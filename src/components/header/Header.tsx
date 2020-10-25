@@ -22,18 +22,18 @@ const Header: React.FC<HeaderProps> = ({
   rightButton,
   alignment = 'left',
 }) => (
-  <SafeAreaView style={styles.safeContainer} edges={['right', 'top', 'left']}>
-    <View
-      style={[
-        styles.container,
-        { justifyContent: JUSTIFY_ALIGNMENT[alignment] as any },
-      ]}>
-      <View style={styles.iconContainer}>{leftButton}</View>
-      <Text style={styles.title}>{title}</Text>
-      <View style={styles.iconContainer}>{rightButton}</View>
-    </View>
-  </SafeAreaView>
-);
+    <SafeAreaView style={styles.safeContainer} edges={['right', 'top', 'left']}>
+      <View
+        style={[
+          styles.container,
+          { justifyContent: JUSTIFY_ALIGNMENT[alignment] as any },
+        ]}>
+        <View style={styles.iconContainer}>{leftButton}</View>
+        <Text style={styles.title}>{title}</Text>
+        <View style={styles.iconContainer}>{rightButton}</View>
+      </View>
+    </SafeAreaView>
+  );
 
 const styles = StyleSheet.create({
   safeContainer: {
