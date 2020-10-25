@@ -3,10 +3,14 @@ import Icon from 'components/icon/Icon';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
-const BackButton = () => {
+interface IBackButton {
+  onClose?: Function
+}
+
+const BackButton = ({ onClose }: IBackButton) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.goBack()}>
+    <TouchableOpacity onPress={() => onClose ? onClose() : navigation.goBack()}>
       <Icon family="MaterialIcon" name="arrow-back-ios" />
     </TouchableOpacity>
   );

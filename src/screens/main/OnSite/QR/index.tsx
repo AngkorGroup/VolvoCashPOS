@@ -30,7 +30,7 @@ const TransfersScreen = () => {
     <SafeAreaView edges={['bottom']} style={styles.safeContainer}>
       <Header
         title={'Escanear código QR'}
-        alignment="center"
+        alignment="left"
         leftButton={<BackButton />}
       />
       { loading ? (
