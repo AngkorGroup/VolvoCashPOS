@@ -58,7 +58,7 @@ export class Api {
 
   put(url: string, body: any) {
     return this.api
-      .post(url, body, { headers: this.getHeaders() })
+      .put(url, body, { headers: this.getHeaders() })
       .then(response => response.data)
       .catch(err => {
         console.log(err.response);
