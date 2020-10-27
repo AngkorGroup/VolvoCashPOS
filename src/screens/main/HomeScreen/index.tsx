@@ -11,7 +11,7 @@ import styles from './styles';
 import { unit } from 'utils/responsive';
 import movements from 'mocks/movements';
 import { formatDate } from 'utils/moment';
-import { ON_SITE_STACK } from 'utils/routes';
+import { ON_SITE_STACK, REMOTE_STACK } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 
 type CardDetailTab = 'Presencial' | 'Remoto';
@@ -25,13 +25,14 @@ const Movements: React.FC<Movements> = ({ type }) => {
   const [filteredMovements, setFilteredMovements] = useState(movements);
 
   const handleChangeText = (text: string) => {
-    setQuery(text);
+    const searchText = text.toLocaleLowerCase();
+    setQuery(searchText);
     setFilteredMovements(
       movements.filter(
         (movement) =>
-          movement.displayName.includes(text) ||
-          formatDate(movement.date).includes(text) ||
-          movement.money.toString().includes(text),
+          movement.displayName.toLocaleLowerCase().includes(searchText) ||
+          formatDate(movement.date).includes(searchText) ||
+          movement.money.toString().includes(searchText),
       ),
     );
   };
@@ -84,7 +85,7 @@ const CardDetailScreen = () => {
         />
         <Button
           title="Cobro Remoto"
-          onPress={() => { }}
+          onPress={() => navigation.navigate(REMOTE_STACK)}
           icon={<Icon family="Fontisto" name="paper-plane" size={unit(50)} />}
         />
       </View>
