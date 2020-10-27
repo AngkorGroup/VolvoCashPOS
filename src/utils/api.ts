@@ -1,13 +1,14 @@
 import axios, { AxiosInstance } from 'axios';
-import { API_URL } from "@env";
+import { API_URL } from '@env';
 
 export interface IToken {
   token?: string;
 }
 
 export interface Header {
-  Accept: string,
-  'Content-Type': string,
+  Accept: string;
+  'Content-Type': string;
+  Authorization?: string;
 }
 
 export class Api {
@@ -18,50 +19,55 @@ export class Api {
   constructor(json: IToken = {}) {
     this.headers = {
       Accept: 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     };
     this.token = json.token || '';
     this.api = axios.create({
-      baseURL: API_URL
+      baseURL: API_URL,
     });
   }
 
+  setToken(token: string) {
+    this.headers = {
+      ...this.headers,
+      Authorization: `Bearer ${token}`,
+    };
+  }
+
   getHeaders() {
-    if (this.token) {
-      return ({
-        ...this.headers,
-        Authorization: `Bearer ${this.token}`
-      });
-    }
-    else {
-      return this.headers;
-    }
+    return this.headers;
   }
 
   get(url: string) {
     return this.api
-      .get(url, { headers: this.getHeaders() })
-      .then(response => response.data)
-      .catch(err => {
+      .get(url, { headers: this.headers })
+      .then((response) => response.data)
+      .catch((err) => {
         console.log(err.response);
+        throw err.message;
       });
   }
 
   post(url: string, body: any) {
+    console.warn(url);
     return this.api
-      .post(url, body, { headers: this.getHeaders() })
-      .then(response => response.data)
-      .catch(err => {
-        console.log(err.response);
+      .post(url, body, { headers: this.headers })
+      .then((response) => response.data)
+      .catch((err) => {
+        console.log(err.message);
+        throw err.message;
       });
   }
 
   put(url: string, body: any) {
     return this.api
-      .put(url, body, { headers: this.getHeaders() })
-      .then(response => response.data)
-      .catch(err => {
+      .put(url, body, { headers: this.headers })
+      .then((response) => response.data)
+      .catch((err) => {
         console.log(err.response);
+        throw err.message;
       });
   }
 }
+
+export const api = new Api();

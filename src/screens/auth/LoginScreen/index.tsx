@@ -1,25 +1,39 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   KeyboardAvoidingView,
   Text,
   Platform,
+  Alert,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Button from 'components/button/Button';
 import { unit } from 'utils/responsive';
 import styles from './styles';
 import Input from 'components/input/Input';
-import * as routes from 'utils/routes';
-import { useNavigation } from '@react-navigation/native';
+import { login } from 'utils/redux/auth/actions';
+// import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// import { Context as AuthContext } from '../../context/auth';
+import { useDispatch } from 'react-redux';
+
+const mockAuth = {
+  email: 'cajero@volvo.com',
+  password: 'Holi1234$',
+  deviceToken: 'xdxdxd',
+};
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useNavigation();
-  // const { state, signin } = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  const loginUser = () => {
+    if (!email && !password) {
+      return Alert.alert('Error', 'Debe llenar los campos email y contraseña.');
+    }
+    dispatch(login(mockAuth));
+  };
+
   return (
     <FastImage source={require('assets/images/pos-bg.png')} style={styles.bg}>
       <SafeAreaView style={styles.safeContainer}>
@@ -55,8 +69,8 @@ const LoginScreen = () => {
           <Button
             title="Ingresar"
             onPress={() => {
-              console.log('sigin');
-              // signin({ email, password });
+              // console.log('sigin');
+              loginUser();
             }}
           />
         </View>
