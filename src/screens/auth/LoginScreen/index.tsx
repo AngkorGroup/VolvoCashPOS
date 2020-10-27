@@ -68,7 +68,6 @@ const LoginScreen = () => {
           <Button
             title="Ingresar"
             onPress={() => {
-              // console.log('sigin');
               loginUser();
             }}
           />
