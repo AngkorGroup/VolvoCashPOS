@@ -12,7 +12,6 @@ import { unit } from 'utils/responsive';
 import styles from './styles';
 import Input from 'components/input/Input';
 import { login } from 'utils/redux/auth/actions';
-// import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 

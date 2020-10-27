@@ -8,11 +8,8 @@ import AuthLoading from './src/screens/auth/AuthLoading';
 import { LogBox } from 'react-native';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-
 import rootReducer from 'utils/redux/rootReducer';
-// import store from './src/redux/store';
 
 LogBox.ignoreLogs(['Sending onAnimatedValueUpdate']);
 const middleware = applyMiddleware(thunk);
