@@ -17,22 +17,6 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* VolvoCashPOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* VolvoCashPOSTests.m */; };
 		554D8C1557F2C5798E73C21D /* libPods-VolvoCashPOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301DBC47FE274AD23061CBAE /* libPods-VolvoCashPOS.a */; };
-		6042789E25438F0600FBA5BA /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042788E25438F0500FBA5BA /* EvilIcons.ttf */; };
-		6042789F25438F0600FBA5BA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042788F25438F0500FBA5BA /* Foundation.ttf */; };
-		604278A025438F0600FBA5BA /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789025438F0500FBA5BA /* FontAwesome5_Solid.ttf */; };
-		604278A125438F0600FBA5BA /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789125438F0500FBA5BA /* SimpleLineIcons.ttf */; };
-		604278A225438F0600FBA5BA /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789225438F0500FBA5BA /* AntDesign.ttf */; };
-		604278A325438F0600FBA5BA /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789325438F0500FBA5BA /* Zocial.ttf */; };
-		604278A425438F0600FBA5BA /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789425438F0500FBA5BA /* Fontisto.ttf */; };
-		604278A525438F0600FBA5BA /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789525438F0500FBA5BA /* Ionicons.ttf */; };
-		604278A625438F0600FBA5BA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789625438F0500FBA5BA /* FontAwesome5_Brands.ttf */; };
-		604278A725438F0600FBA5BA /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789725438F0500FBA5BA /* Feather.ttf */; };
-		604278A825438F0600FBA5BA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789825438F0600FBA5BA /* FontAwesome.ttf */; };
-		604278A925438F0600FBA5BA /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789925438F0600FBA5BA /* FontAwesome5_Regular.ttf */; };
-		604278AA25438F0600FBA5BA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789A25438F0600FBA5BA /* Octicons.ttf */; };
-		604278AB25438F0600FBA5BA /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789B25438F0600FBA5BA /* MaterialIcons.ttf */; };
-		604278AC25438F0600FBA5BA /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789C25438F0600FBA5BA /* MaterialCommunityIcons.ttf */; };
-		604278AD25438F0600FBA5BA /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6042789D25438F0600FBA5BA /* Entypo.ttf */; };
 		60E5892625439CC6009FC690 /* VolvoBroadProDigital.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B72543988000FBA5BA /* VolvoBroadProDigital.otf */; };
 		60E5892725439CCA009FC690 /* VolvoNovum-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278AE2543987F00FBA5BA /* VolvoNovum-Bold.otf */; };
 		60E5892825439CE3009FC690 /* VolvoNovum-SemiLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B22543987F00FBA5BA /* VolvoNovum-SemiLightItalic.otf */; };
@@ -430,30 +414,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				60E5892825439CE3009FC690 /* VolvoNovum-SemiLightItalic.otf in Resources */,
-				604278A925438F0600FBA5BA /* FontAwesome5_Regular.ttf in Resources */,
 				60E5892E25439CF3009FC690 /* VolvoNovum-LightItalic.otf in Resources */,
-				604278A525438F0600FBA5BA /* Ionicons.ttf in Resources */,
 				60E5892A25439CEA009FC690 /* VolvoNovum-Regular.otf in Resources */,
-				604278A825438F0600FBA5BA /* FontAwesome.ttf in Resources */,
-				604278A425438F0600FBA5BA /* Fontisto.ttf in Resources */,
-				604278A725438F0600FBA5BA /* Feather.ttf in Resources */,
-				604278A325438F0600FBA5BA /* Zocial.ttf in Resources */,
 				60E5892925439CE7009FC690 /* VolvoNovum-SemiLight.otf in Resources */,
 				60E5892C25439CF3009FC690 /* VolvoNovum-Italic.otf in Resources */,
-				604278A025438F0600FBA5BA /* FontAwesome5_Solid.ttf in Resources */,
-				604278AD25438F0600FBA5BA /* Entypo.ttf in Resources */,
 				60E5892F25439CF3009FC690 /* VolvoNovum-Medium.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				604278AB25438F0600FBA5BA /* MaterialIcons.ttf in Resources */,
-				604278A625438F0600FBA5BA /* FontAwesome5_Brands.ttf in Resources */,
-				604278A225438F0600FBA5BA /* AntDesign.ttf in Resources */,
-				604278AA25438F0600FBA5BA /* Octicons.ttf in Resources */,
-				6042789F25438F0600FBA5BA /* Foundation.ttf in Resources */,
 				60E5892B25439CED009FC690 /* VolvoNovum-MediumItalic.otf in Resources */,
-				604278AC25438F0600FBA5BA /* MaterialCommunityIcons.ttf in Resources */,
-				6042789E25438F0600FBA5BA /* EvilIcons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				604278A125438F0600FBA5BA /* SimpleLineIcons.ttf in Resources */,
 				60E5892625439CC6009FC690 /* VolvoBroadProDigital.otf in Resources */,
 				60E5892725439CCA009FC690 /* VolvoNovum-Bold.otf in Resources */,
 				60E5893025439CFA009FC690 /* VolvoNovum-BoldItalic.otf in Resources */,
