@@ -43,18 +43,15 @@ export class Api {
       .get(url, { headers: this.headers })
       .then((response) => response.data)
       .catch((err) => {
-        console.log(err.response);
         throw err.message;
       });
   }
 
   post(url: string, body: any) {
-    console.warn(url);
     return this.api
       .post(url, body, { headers: this.headers })
       .then((response) => response.data)
       .catch((err) => {
-        console.log(err.message);
         throw err.message;
       });
   }
@@ -64,7 +61,6 @@ export class Api {
       .put(url, body, { headers: this.headers })
       .then((response) => response.data)
       .catch((err) => {
-        console.log(err.response);
         throw err.message;
       });
   }

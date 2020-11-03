@@ -17,14 +17,13 @@ const TransfersScreen = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
-  const onSuccess = (val: QRData) => {
+  const onSuccess = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      console.warn(val.data);
       navigation.navigate(ON_SITE_SUCCESS_SCREEN);
     }, 1000);
-  }
+  };
 
   return (
     <SafeAreaView edges={['bottom']} style={styles.safeContainer}>
@@ -33,14 +32,16 @@ const TransfersScreen = () => {
         alignment="left"
         leftButton={<BackButton />}
       />
-      { loading ? (
+      {loading ? (
         <View style={styles.loading}>
-          <ActivityIndicator size="large" color={palette.ocean} animating={true} />
+          <ActivityIndicator
+            size="large"
+            color={palette.ocean}
+            animating={true}
+          />
         </View>
       ) : (
-          <QRCodeScanner
-            onRead={onSuccess}
-          />
+          <QRCodeScanner onRead={onSuccess} />
         )}
     </SafeAreaView>
   );

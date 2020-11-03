@@ -1,14 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Header from 'components/header/Header';
-import { View, KeyboardAvoidingView, Platform, TouchableOpacity } from 'react-native';
+import {
+  View,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import styles from './styles';
 import BackButton from 'components/header/BackButton';
 import Button from 'components/button/Button';
-import ClientModal from 'screens/main/Remote/ClientModal'
+import ClientModal from 'screens/main/Remote/ClientModal';
 import CardListModal from 'screens/main/Remote/CardModal';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Input from 'components/input/Input';
 import { unit } from 'utils/responsive';
+import { REMOTE_CONFIRMATION_SCREEN } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 
 const PaymentScreen = () => {
@@ -23,11 +30,14 @@ const PaymentScreen = () => {
 
   const setOnlyNumbers = (val: String) => {
     return setAmount(val.replace(/[^\d,]+/, ''));
-  }
+  };
 
-  const goToQRScreen = () => {
-    // navigation.navigate(QR_SCREEN);
-  }
+  const goToConfirmationScreen = () => {
+    if (!amount || !concept || !client.id || !card.id) {
+      return Alert.alert('Error', 'Llenar todos los datos para continuar.');
+    }
+    navigation.navigate(REMOTE_CONFIRMATION_SCREEN);
+  };
 
   return (
     <SafeAreaView edges={['bottom']} style={styles.safeContainer}>
@@ -40,10 +50,11 @@ const PaymentScreen = () => {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           keyboardVerticalOffset={Platform.OS === 'ios' ? unit(40) : 0}>
-          <TouchableOpacity onPress={() => {
-            setIsCliModalVisible(true);
-          }}>
-            <View pointerEvents='none'>
+          <TouchableOpacity
+            onPress={() => {
+              setIsCliModalVisible(true);
+            }}>
+            <View pointerEvents="none">
               <Input
                 placeholder="Cliente"
                 value={client.name}
@@ -52,10 +63,11 @@ const PaymentScreen = () => {
               />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
-            setIsCardModalVisible(true);
-          }}>
-            <View pointerEvents='none'>
+          <TouchableOpacity
+            onPress={() => {
+              setIsCardModalVisible(true);
+            }}>
+            <View pointerEvents="none">
               <Input
                 placeholder="Tarjeta"
                 value={card.title}
@@ -67,9 +79,9 @@ const PaymentScreen = () => {
           <Input
             placeholder="Monto"
             value={amount}
-            currency='$'
+            currency="$"
             onChangeText={setOnlyNumbers}
-            keyboardType='numeric'
+            keyboardType="numeric"
             containerStyle={styles.input}
           />
           <Input
@@ -79,15 +91,20 @@ const PaymentScreen = () => {
           />
         </KeyboardAvoidingView>
         <View style={styles.buttonContainer}>
-          <Button
-            title="Siguiente"
-            onPress={goToQRScreen}
-          />
+          <Button title="Cobrar" onPress={goToConfirmationScreen} />
         </View>
       </View>
-      <ClientModal setClient={setClient} isVisible={isCliModalVisible} setIsVisible={setIsCliModalVisible} />
-      <CardListModal setCard={setCard} isVisible={isCardModalVisible} setIsVisible={setIsCardModalVisible} />
-    </SafeAreaView >
+      <ClientModal
+        setClient={setClient}
+        isVisible={isCliModalVisible}
+        setIsVisible={setIsCliModalVisible}
+      />
+      <CardListModal
+        setCard={setCard}
+        isVisible={isCardModalVisible}
+        setIsVisible={setIsCardModalVisible}
+      />
+    </SafeAreaView>
   );
 };
 

@@ -1,20 +1,20 @@
+import React, { useState, useEffect } from 'react';
 import Button from 'components/button/Button';
 import ListItem from 'components/card/ListItem';
 import ExitButton from 'components/header/ExitButton';
 import Header from 'components/header/Header';
 import Icon from 'components/icon/Icon';
 import Search from 'components/input/Search';
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, RefreshControl } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import styles from './styles';
 import { unit } from 'utils/responsive';
-import movements from 'mocks/movements';
-import { formatDate } from 'utils/moment';
 import { ON_SITE_STACK, REMOTE_STACK } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
+import { api } from 'utils/api';
+import { Charge } from 'models/Charge';
 
-type CardDetailTab = 'Presencial' | 'Remoto';
+type CardDetailTab = 'FaceToFace' | 'Remote';
 
 interface Movements {
   type: CardDetailTab;
@@ -22,17 +22,36 @@ interface Movements {
 
 const Movements: React.FC<Movements> = ({ type }) => {
   const [query, setQuery] = useState('');
-  const [filteredMovements, setFilteredMovements] = useState(movements);
+  const [loading, setLoading] = useState(false);
+  const [charges, setCharges] = useState<Charge[]>([]);
+  const [filteredMovements, setFilteredMovements] = useState<Charge[]>([]);
+
+  const refresh = () => {
+    setLoading(true);
+    setCharges([]);
+    setFilteredMovements([]);
+    api
+      .get(`charges?chargeType=${type}`)
+      .then((res) => {
+        setCharges(res);
+        setFilteredMovements(res);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    refresh();
+  }, [type]);
 
   const handleChangeText = (text: string) => {
     const searchText = text.toLocaleLowerCase();
-    setQuery(searchText);
+    setQuery(text);
     setFilteredMovements(
-      movements.filter(
-        (movement) =>
-          movement.displayName.toLocaleLowerCase().includes(searchText) ||
-          formatDate(movement.date).includes(searchText) ||
-          movement.money.toString().includes(searchText),
+      charges.filter((charge) =>
+        charge.displayName.toLocaleLowerCase().includes(searchText),
       ),
     );
   };
@@ -46,6 +65,9 @@ const Movements: React.FC<Movements> = ({ type }) => {
         style={styles.search}
       />
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
         style-={styles.list}
         data={filteredMovements}
         keyExtractor={(movement) => movement.id.toString()}
@@ -53,11 +75,11 @@ const Movements: React.FC<Movements> = ({ type }) => {
         renderItem={({ item: movement }) => (
           <ListItem
             title={movement.displayName}
-            subtitle={formatDate(movement.date)}
-            value={movement.money.toString()}
+            subtitle={movement.createdAt}
+            value={movement.amount.label}
             type={type}
             status={movement.status}
-            mode={movement.type === 'in' ? 'positive' : 'negative'}
+            mode={'positive'}
           />
         )}
         ItemSeparatorComponent={() => <View style={styles.divider} />}
@@ -67,7 +89,7 @@ const Movements: React.FC<Movements> = ({ type }) => {
 };
 
 const CardDetailScreen = () => {
-  const [tab, setTab] = useState<CardDetailTab>('Presencial');
+  const [tab, setTab] = useState<CardDetailTab>('FaceToFace');
   const navigation = useNavigation();
 
   return (
@@ -94,29 +116,29 @@ const CardDetailScreen = () => {
           style={[
             styles.leftButton,
             styles.button,
-            tab === 'Presencial' ? styles.active : styles.disabled,
+            tab === 'FaceToFace' ? styles.active : styles.disabled,
           ]}
           title="Presencial"
           textStyle={
-            tab === 'Presencial'
+            tab === 'FaceToFace'
               ? styles.activeTextButton
               : styles.disabledTextButton
           }
-          onPress={() => setTab('Presencial')}
+          onPress={() => setTab('FaceToFace')}
         />
         <Button
           style={[
             styles.rightButton,
             styles.button,
-            tab === 'Remoto' ? styles.active : styles.disabled,
+            tab === 'Remote' ? styles.active : styles.disabled,
           ]}
           title="Remoto"
           textStyle={
-            tab === 'Remoto'
+            tab === 'Remote'
               ? styles.activeTextButton
               : styles.disabledTextButton
           }
-          onPress={() => setTab('Remoto')}
+          onPress={() => setTab('Remote')}
         />
       </View>
       <Movements type={tab} />

@@ -5,30 +5,36 @@ import { View } from 'react-native';
 import styles from './styles';
 import Button from 'components/button/Button';
 import InfoRow from 'components/card/InfoRow';
+import { theme } from 'utils/styles';
 import { useNavigation } from '@react-navigation/native';
 import { HOME_SCREEN } from 'utils/routes';
 
-const SuccessModal = () => {
+const ConfirmationScreen = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Header
-        title={'Cobro exitoso'}
+        title={'Confirmar cobro'}
         alignment="center"
         rightButton={<CloseButton />}
       />
       <View style={styles.card}>
-        <InfoRow label="Operación" value="001-12398273-5" />
         <InfoRow label="Monto" value="S/ 1,200.00" />
         <InfoRow label="Concepto" value="Lubricante HD-5000" />
         <InfoRow label="Vendedor" value="Luis Ramos" />
         <View style={styles.buttonsContainer}>
           <Button
-            title="Confirmar"
+            title="Rechazar"
+            textStyle={theme.red}
             style={styles.button}
             onPress={() => {
-              navigation.navigate(HOME_SCREEN);
+              navigation.goBack();
             }}
+          />
+          <Button
+            title="Confirmar"
+            style={styles.button}
+            onPress={() => navigation.navigate(HOME_SCREEN)}
           />
         </View>
       </View>
@@ -36,4 +42,4 @@ const SuccessModal = () => {
   );
 };
 
-export default SuccessModal;
+export default ConfirmationScreen;

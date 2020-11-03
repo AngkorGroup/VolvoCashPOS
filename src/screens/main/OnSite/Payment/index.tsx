@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Header from 'components/header/Header';
-import { View, KeyboardAvoidingView, Platform, Text } from 'react-native';
+import { View, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import styles from './styles';
 import BackButton from 'components/header/BackButton';
 import Button from 'components/button/Button';
@@ -18,11 +18,14 @@ const PaymentScreen = () => {
 
   const setOnlyNumbers = (val: String) => {
     return setAmount(val.replace(/[^\d,]+/, ''));
-  }
+  };
 
   const goToQRScreen = () => {
+    if (!amount || !concept) {
+      return Alert.alert('Error', 'Llenar todos los datos para continuar.');
+    }
     navigation.navigate(QR_SCREEN);
-  }
+  };
 
   return (
     <SafeAreaView edges={['bottom']} style={styles.safeContainer}>
@@ -38,9 +41,9 @@ const PaymentScreen = () => {
           <Input
             placeholder="Monto"
             value={amount}
-            currency='$'
+            currency="$"
             onChangeText={setOnlyNumbers}
-            keyboardType='numeric'
+            keyboardType="numeric"
             containerStyle={styles.input}
           />
           <Input
@@ -50,10 +53,7 @@ const PaymentScreen = () => {
           />
         </KeyboardAvoidingView>
         <View style={styles.buttonContainer}>
-          <Button
-            title="Siguiente"
-            onPress={goToQRScreen}
-          />
+          <Button title="Siguiente" onPress={goToQRScreen} />
         </View>
       </View>
     </SafeAreaView>

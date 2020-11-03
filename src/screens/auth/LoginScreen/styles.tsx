@@ -15,7 +15,7 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: unit(100)
+    bottom: unit(50),
   },
   keyboardContainer: {
     flex: 1,

@@ -1,6 +1,6 @@
 import { api } from 'utils/api';
 import { Action } from 'redux';
-// import { Dispa /tch } from 'react-redux';
+import { setUserToken } from 'utils/storage';
 import { Auth } from '../types';
 import {
   LOGIN_SUCCESS,
@@ -64,6 +64,7 @@ export const login = (userData: UserData) => (dispatch: any) => {
     .post('login', userData)
     .then((res) => {
       api.setToken(res.authToken);
+      // setUserToken(res.authToken);
       dispatch(loginSuccess(res));
     })
     .catch((err) => {

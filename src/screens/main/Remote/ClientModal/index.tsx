@@ -6,8 +6,7 @@ import Search from 'components/input/Search';
 import { View, Modal } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import styles from './styles';
-import movements from 'mocks/movements';
-import { formatDate } from 'utils/moment';
+import contacts from 'mocks/contacts';
 
 interface IClientModal {
   isVisible: boolean;
@@ -22,15 +21,14 @@ interface IClients {
 
 const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
   const [query, setQuery] = useState('');
-  const [filteredMovements, setFilteredMovements] = useState(movements);
+  const [filteredMovements, setFilteredMovements] = useState(contacts);
 
   const handleChangeText = (text: string) => {
     const searchText = text.toLocaleLowerCase();
-    setQuery(searchText);
+    setQuery(text);
     setFilteredMovements(
-      movements.filter(
-        (movement) =>
-          movement.displayName.toLocaleLowerCase().includes(searchText)
+      contacts.filter((contact) =>
+        contact.fullName.toLocaleLowerCase().includes(searchText),
       ),
     );
   };
@@ -50,11 +48,11 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
         showsVerticalScrollIndicator={false}
         renderItem={({ item: client }) => (
           <ListItem
-            title={client.displayName}
-            subtitle={formatDate(client.date)}
+            title={client.fullName}
+            subtitle={`${client.documentType}: ${client.documentNumber}`}
             onPress={() => {
               setIsVisible(false);
-              setClient({ id: client.id, name: client.displayName });
+              setClient({ id: client.id, name: client.fullName });
             }}
           />
         )}
@@ -67,7 +65,7 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
 const ClientModal: React.FC<IClientModal> = ({
   isVisible,
   setIsVisible,
-  setClient
+  setClient,
 }) => {
   return (
     <Modal visible={isVisible} style={styles.container}>
@@ -75,8 +73,12 @@ const ClientModal: React.FC<IClientModal> = ({
         title={'Seleccionar cliente'}
         alignment="left"
         leftButton={
-          <BackButton onClose={() => { setIsVisible(false); }
-          } />}
+          <BackButton
+            onClose={() => {
+              setIsVisible(false);
+            }}
+          />
+        }
       />
       <View style={styles.headerDivider} />
       <Clients setClient={setClient} setIsVisible={setIsVisible} />

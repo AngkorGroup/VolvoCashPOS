@@ -2,14 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { unit } from 'utils/responsive';
 import { theme, palette } from 'utils/styles';
+import { Status } from 'models/Charge';
 
 const width = Dimensions.get('window').width;
 
 type Mode = 'positive' | 'negative';
 
-type CardDetailTab = 'Presencial' | 'Remoto';
-
-type Status = 'Pendiente' | 'Rechazado' | 'Aprobado' | undefined;
+type CardDetailTab = 'FaceToFace' | 'Remote';
 
 interface ListItem {
   title: string;
@@ -17,16 +16,17 @@ interface ListItem {
   value: string;
   mode: Mode;
   type: CardDetailTab;
-  status: Status;
+  status?: Status;
 }
 
 const getStyleByStatus = (status: Status) => {
   switch (status) {
-    case 'Pendiente':
+    case 'Pending':
       return 'pending';
-    case 'Aprobado':
+    case 'Accepted':
       return 'approved';
-    case 'Rechazado':
+    case 'Rejected':
+    case 'Canceled':
       return 'rejected';
     default:
       return 'approved';
@@ -51,7 +51,7 @@ const ListItem: React.FC<ListItem> = ({
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-      {type === 'Remoto' && status && (
+      {type === 'Remote' && status && (
         <View style={[styles.badge, styles[getStyleByStatus(status)]]}>
           <Text style={styles.statusText} numberOfLines={1}>
             {status}

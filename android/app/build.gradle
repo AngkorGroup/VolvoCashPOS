@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.volvocashpos"
+        applicationId "com.volvo.pos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true

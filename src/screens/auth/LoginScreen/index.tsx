@@ -26,8 +26,19 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
+  const validEmail = () => {
+    console.log('test');
+    return email.match(
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    );
+  };
+
   const loginUser = () => {
-    if (!email && !password) {
+    if (!validEmail()) {
+      return Alert.alert('Error', 'Correo invalido.');
+    }
+
+    if (!email || !password) {
       return Alert.alert('Error', 'Debe llenar los campos email y contraseña.');
     }
     dispatch(login(mockAuth));
