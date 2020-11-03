@@ -1,7 +1,6 @@
 import { Card } from 'models/Card';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { unit } from 'utils/responsive';
 import { theme } from 'utils/styles';
 
@@ -12,7 +11,7 @@ interface VolvoCardProps {
 
 const VolvoCard: React.FC<VolvoCardProps> = ({ card, onPress }) => {
   const bgColor = {
-    backgroundColor: card.color,
+    backgroundColor: card.cardType.color,
   };
   return (
     <TouchableOpacity
@@ -20,8 +19,7 @@ const VolvoCard: React.FC<VolvoCardProps> = ({ card, onPress }) => {
       activeOpacity={0.7}
       onPress={onPress}>
       <Text style={styles.primaryText}>{card.cardType.displayName}</Text>
-      <Text style={styles.primaryText}>{card.money}</Text>
-
+      <Text style={styles.primaryText}>{card.calculatedBalance.label}</Text>
     </TouchableOpacity>
   );
 };
@@ -39,6 +37,7 @@ const styles = StyleSheet.create({
     ...theme.header2,
     ...theme.primaryOverDark,
     lineHeight: unit(60),
+    textAlign: 'center',
     fontFamily: 'VolvoBroadProDigital',
     marginTop: unit(5),
   },

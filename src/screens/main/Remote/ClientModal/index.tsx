@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ListItem from 'components/card/ClientListItem';
 import BackButton from 'components/header/BackButton';
 import Header from 'components/header/Header';
 import Search from 'components/input/Search';
-import { View, Modal } from 'react-native';
+import { View, Modal, ActivityIndicator } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import styles from './styles';
-import contacts from 'mocks/contacts';
+import { api } from 'utils/api';
+import { palette } from 'utils/styles';
+import { Contact } from 'models/Contact';
 
 interface IClientModal {
   isVisible: boolean;
@@ -21,7 +23,27 @@ interface IClients {
 
 const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
   const [query, setQuery] = useState('');
-  const [filteredMovements, setFilteredMovements] = useState(contacts);
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [filteredMovements, setFilteredMovements] = useState<Contact[]>([]);
+
+  const getContacts = () => {
+    setLoading(true);
+    api
+      .get('contacts')
+      .then((res) => {
+        setContacts(res);
+        setFilteredMovements(res);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getContacts();
+  }, []);
 
   const handleChangeText = (text: string) => {
     const searchText = text.toLocaleLowerCase();
@@ -41,23 +63,36 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
         placeholder="Buscar cliente"
         style={styles.search}
       />
-      <FlatList
-        style-={styles.list}
-        data={filteredMovements}
-        keyExtractor={(movement) => movement.id.toString()}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item: client }) => (
-          <ListItem
-            title={client.fullName}
-            subtitle={`${client.documentType}: ${client.documentNumber}`}
-            onPress={() => {
-              setIsVisible(false);
-              setClient({ id: client.id, name: client.fullName });
-            }}
+      {loading ? (
+        <ActivityIndicator
+          size="large"
+          color={palette.ocean}
+          animating={true}
+        />
+      ) : (
+          <FlatList
+            style-={styles.list}
+            data={filteredMovements}
+            keyExtractor={(movement) => movement.id.toString()}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item: client }) => (
+              <ListItem
+                title={client.fullName}
+                subtitle={`${client.documentType}: ${client.documentNumber}`}
+                onPress={() => {
+                  setIsVisible(false);
+                  setClient({
+                    id: client.id,
+                    name: client.fullName,
+                    documentType: client.documentType,
+                    documentNumber: client.documentNumber,
+                  });
+                }}
+              />
+            )}
+            ItemSeparatorComponent={() => <View style={styles.divider} />}
           />
         )}
-        ItemSeparatorComponent={() => <View style={styles.divider} />}
-      />
     </View>
   );
 };

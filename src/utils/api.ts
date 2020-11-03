@@ -39,11 +39,12 @@ export class Api {
   }
 
   get(url: string) {
+    console.warn(API_URL);
     return this.api
       .get(url, { headers: this.headers })
       .then((response) => response.data)
       .catch((err) => {
-        throw err.message;
+        throw err;
       });
   }
 
@@ -52,7 +53,7 @@ export class Api {
       .post(url, body, { headers: this.headers })
       .then((response) => response.data)
       .catch((err) => {
-        throw err.message;
+        throw err;
       });
   }
 
@@ -61,7 +62,7 @@ export class Api {
       .put(url, body, { headers: this.headers })
       .then((response) => response.data)
       .catch((err) => {
-        throw err.message;
+        throw err;
       });
   }
 }

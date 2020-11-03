@@ -26,6 +26,8 @@ const initialState = {
 export const getIsAuthenticated = (state: RootState) =>
   selectAuth(state).isAuthenticated;
 
+export const getUser = (state: RootState) => selectAuth(state).data;
+
 const errorMessage = 'Email or password is incorrect';
 
 export default function loginReducer(

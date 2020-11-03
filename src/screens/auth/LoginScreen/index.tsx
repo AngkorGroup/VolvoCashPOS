@@ -15,19 +15,12 @@ import { login } from 'utils/redux/auth/actions';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 
-const mockAuth = {
-  email: 'cajero@volvo.com',
-  password: 'Holi1234$',
-  deviceToken: 'xdxdxd',
-};
-
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const validEmail = () => {
-    console.log('test');
     return email.match(
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     );
@@ -41,7 +34,13 @@ const LoginScreen = () => {
     if (!email || !password) {
       return Alert.alert('Error', 'Debe llenar los campos email y contraseña.');
     }
-    dispatch(login(mockAuth));
+    dispatch(
+      login({
+        email: email.toLocaleLowerCase(),
+        password,
+        deviceToken: 'xdxdxd',
+      }),
+    );
   };
 
   return (

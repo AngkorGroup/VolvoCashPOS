@@ -9,11 +9,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Input from 'components/input/Input';
 import { unit } from 'utils/responsive';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setCharge } from 'utils/redux/charge/actions';
 
 const PaymentScreen = () => {
   const [amount, setAmount] = useState('');
   const [concept, setConcept] = useState('');
 
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const setOnlyNumbers = (val: String) => {
@@ -24,6 +27,12 @@ const PaymentScreen = () => {
     if (!amount || !concept) {
       return Alert.alert('Error', 'Llenar todos los datos para continuar.');
     }
+    dispatch(
+      setCharge({
+        amount: parseInt(amount, 10),
+        description: concept,
+      }),
+    );
     navigation.navigate(QR_SCREEN);
   };
 

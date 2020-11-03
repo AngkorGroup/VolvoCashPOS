@@ -13,6 +13,8 @@ import { ON_SITE_STACK, REMOTE_STACK } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 import { api } from 'utils/api';
 import { Charge } from 'models/Charge';
+import { useSelector } from 'react-redux';
+import { getUser } from 'utils/redux/auth/reducer';
 
 type CardDetailTab = 'FaceToFace' | 'Remote';
 
@@ -51,7 +53,7 @@ const Movements: React.FC<Movements> = ({ type }) => {
     setQuery(text);
     setFilteredMovements(
       charges.filter((charge) =>
-        charge.displayName.toLocaleLowerCase().includes(searchText),
+        (charge.description || '-').toLocaleLowerCase().includes(searchText),
       ),
     );
   };
@@ -74,7 +76,7 @@ const Movements: React.FC<Movements> = ({ type }) => {
         showsVerticalScrollIndicator={false}
         renderItem={({ item: movement }) => (
           <ListItem
-            title={movement.displayName}
+            title={movement.description || '-'}
             subtitle={movement.createdAt}
             value={movement.amount.label}
             type={type}
@@ -91,11 +93,12 @@ const Movements: React.FC<Movements> = ({ type }) => {
 const CardDetailScreen = () => {
   const [tab, setTab] = useState<CardDetailTab>('FaceToFace');
   const navigation = useNavigation();
+  const user = useSelector(getUser);
 
   return (
     <View style={styles.container}>
       <Header
-        title={'Bienvenido, Usuario'}
+        title={`Bienvenido, ${user ? user.cashier.fullName : '-'}`}
         alignment="center"
         rightButton={<ExitButton />}
       />

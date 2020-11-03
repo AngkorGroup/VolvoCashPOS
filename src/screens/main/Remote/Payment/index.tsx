@@ -17,15 +17,23 @@ import Input from 'components/input/Input';
 import { unit } from 'utils/responsive';
 import { REMOTE_CONFIRMATION_SCREEN } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setCharge } from 'utils/redux/charge/actions';
+import { IClient } from 'utils/redux/types';
 
 const PaymentScreen = () => {
   const [amount, setAmount] = useState('');
   const [concept, setConcept] = useState('');
-  const [client, setClient] = useState({ id: null, name: '' });
-  const [card, setCard] = useState({ id: null, title: '' });
+  const [client, setClient] = useState<IClient>({
+    name: '',
+    documentType: '',
+    documentNumber: '',
+  });
+  const [card, setCard] = useState({ cardToken: '', title: '' });
   const [isCliModalVisible, setIsCliModalVisible] = useState(false);
   const [isCardModalVisible, setIsCardModalVisible] = useState(false);
 
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const setOnlyNumbers = (val: String) => {
@@ -33,9 +41,19 @@ const PaymentScreen = () => {
   };
 
   const goToConfirmationScreen = () => {
-    if (!amount || !concept || !client.id || !card.id) {
+    if (!amount || !concept || !client.id || !card.cardToken) {
       return Alert.alert('Error', 'Llenar todos los datos para continuar.');
     }
+
+    dispatch(
+      setCharge({
+        amount: parseInt(amount, 10),
+        cardToken: card.cardToken,
+        description: concept,
+        client,
+      }),
+    );
+
     navigation.navigate(REMOTE_CONFIRMATION_SCREEN);
   };
 
@@ -65,7 +83,9 @@ const PaymentScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              setIsCardModalVisible(true);
+              if (client.id) {
+                setIsCardModalVisible(true);
+              }
             }}>
             <View pointerEvents="none">
               <Input
@@ -101,6 +121,7 @@ const PaymentScreen = () => {
       />
       <CardListModal
         setCard={setCard}
+        clientId={client.id}
         isVisible={isCardModalVisible}
         setIsVisible={setIsCardModalVisible}
       />

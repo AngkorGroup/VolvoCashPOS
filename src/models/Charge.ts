@@ -10,6 +10,7 @@ export type Charge = {
     label: string;
   };
   displayName: string;
+  description?: string;
   status: Status;
   chargeType: ChargeType;
   cardId: number;

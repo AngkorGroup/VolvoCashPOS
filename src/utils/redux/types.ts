@@ -29,3 +29,17 @@ export type Auth = {
   cashier: User;
   authToken: string;
 };
+
+export interface IClient {
+  documentType?: string;
+  documentNumber?: string;
+  name: string;
+  id?: number;
+}
+export interface ChargeState {
+  client?: IClient;
+  cardToken?: string;
+  description: string;
+  amount: number;
+  operationCode?: string;
+}
