@@ -8,6 +8,8 @@ const initialState = {
   cardToken: '',
   description: '',
   amount: 0,
+  client: undefined,
+  operationCode: '',
 };
 
 export const getChargeInfo = (state: RootState) => selectChargeInfo(state);
@@ -16,12 +18,11 @@ export default function chargeReducer(
   state: ChargeState = initialState,
   action: SetCharge,
 ): ChargeState {
-  switch (action.type) {
-    case SET_CHARGE:
-      return {
-        ...action.data,
-      };
-    default:
-      return state;
+  if (action.type === SET_CHARGE) {
+    return {
+      ...action.data,
+    };
+  } else {
+    return state;
   }
 }

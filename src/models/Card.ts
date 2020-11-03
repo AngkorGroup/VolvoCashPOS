@@ -1,4 +1,4 @@
-import { Currency, Money } from './Money';
+import { Currency } from './Money';
 
 export interface CardType {
   id: number;

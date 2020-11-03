@@ -1,6 +1,5 @@
 import { api } from 'utils/api';
 import { Action } from 'redux';
-import { setUserToken } from 'utils/storage';
 import { Auth } from '../types';
 import {
   LOGIN_SUCCESS,
