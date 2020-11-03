@@ -15,8 +15,8 @@ const initialState = {
 export const getChargeInfo = (state: RootState) => selectChargeInfo(state);
 
 export default function chargeReducer(
-  state: ChargeState = initialState,
   action: SetCharge,
+  state: ChargeState = initialState,
 ): ChargeState {
   if (action.type === SET_CHARGE) {
     return {
