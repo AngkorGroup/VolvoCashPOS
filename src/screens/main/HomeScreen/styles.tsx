@@ -30,7 +30,7 @@ export default StyleSheet.create({
     height: unit(27),
     width: unit(150),
     borderColor: palette.ocean,
-    borderWidth: unit(1),
+    borderWidth: 1,
   },
   leftButton: {
     borderTopRightRadius: 0,

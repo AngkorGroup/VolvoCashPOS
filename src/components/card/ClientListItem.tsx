@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import { unit } from 'utils/responsive';
 import { theme } from 'utils/styles';
 
@@ -11,11 +17,7 @@ interface ListItem {
   onPress(): void;
 }
 
-const ListItem: React.FC<ListItem> = ({
-  title,
-  subtitle,
-  onPress,
-}) => {
+const ListItem: React.FC<ListItem> = ({ title, subtitle, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <View>

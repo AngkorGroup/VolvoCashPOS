@@ -12,6 +12,7 @@ export const palette = {
   fog: '#d8d7d5',
   raspberry: '#D84451',
   orange: '#DD7610',
+  grass: '#78B833',
 };
 
 export const theme = {
@@ -37,6 +38,9 @@ export const theme = {
   },
   accent: {
     color: palette.ocean,
+  },
+  accepted: {
+    backgroundColor: palette.grass,
   },
   primary: {
     color: palette.granite,

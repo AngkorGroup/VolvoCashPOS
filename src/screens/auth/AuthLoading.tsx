@@ -13,7 +13,6 @@ const AuthLoading = () => {
 
   return (
     <RootStack.Navigator mode="modal" headerMode="none">
-      {/* {!state.token ? ( */}
       {!isAuthenticated ? (
         <RootStack.Screen name={LOGIN_STACK} component={LoginNavigation} />
       ) : (

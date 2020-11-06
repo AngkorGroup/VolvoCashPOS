@@ -8,7 +8,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { ViewStyle } from 'react-native';
+import { ViewStyle, TextStyle } from 'react-native';
 import { theme } from 'utils/styles';
 import { unit } from 'utils/responsive';
 
@@ -51,7 +51,7 @@ export type IconFamily =
 interface IconProps {
   family: IconFamily;
   name: string;
-  style?: ViewStyle;
+  style?: ViewStyle | TextStyle;
   size?: number;
   color?: string;
 }

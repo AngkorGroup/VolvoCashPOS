@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ListItem from 'components/card/ClientListItem';
 import BackButton from 'components/header/BackButton';
 import Header from 'components/header/Header';
 import Search from 'components/input/Search';
-import { View, Modal } from 'react-native';
+import { View, Modal, ActivityIndicator } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import styles from './styles';
-import movements from 'mocks/movements';
-import { formatDate } from 'utils/moment';
+import { api } from 'utils/api';
+import { palette } from 'utils/styles';
+import { Contact } from 'models/Contact';
 
 interface IClientModal {
   isVisible: boolean;
@@ -22,15 +23,34 @@ interface IClients {
 
 const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
   const [query, setQuery] = useState('');
-  const [filteredMovements, setFilteredMovements] = useState(movements);
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [filteredMovements, setFilteredMovements] = useState<Contact[]>([]);
+
+  const getContacts = () => {
+    setLoading(true);
+    api
+      .get('contacts')
+      .then((res) => {
+        setContacts(res);
+        setFilteredMovements(res);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getContacts();
+  }, []);
 
   const handleChangeText = (text: string) => {
     const searchText = text.toLocaleLowerCase();
-    setQuery(searchText);
+    setQuery(text);
     setFilteredMovements(
-      movements.filter(
-        (movement) =>
-          movement.displayName.toLocaleLowerCase().includes(searchText)
+      contacts.filter((contact) =>
+        contact.fullName.toLocaleLowerCase().includes(searchText),
       ),
     );
   };
@@ -43,23 +63,36 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
         placeholder="Buscar cliente"
         style={styles.search}
       />
-      <FlatList
-        style-={styles.list}
-        data={filteredMovements}
-        keyExtractor={(movement) => movement.id.toString()}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item: client }) => (
-          <ListItem
-            title={client.displayName}
-            subtitle={formatDate(client.date)}
-            onPress={() => {
-              setIsVisible(false);
-              setClient({ id: client.id, name: client.displayName });
-            }}
+      {loading ? (
+        <ActivityIndicator
+          size="large"
+          color={palette.ocean}
+          animating={true}
+        />
+      ) : (
+          <FlatList
+            style-={styles.list}
+            data={filteredMovements}
+            keyExtractor={(movement) => movement.id.toString()}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item: client }) => (
+              <ListItem
+                title={client.fullName}
+                subtitle={`${client.documentType}: ${client.documentNumber}`}
+                onPress={() => {
+                  setIsVisible(false);
+                  setClient({
+                    id: client.id,
+                    name: client.fullName,
+                    documentType: client.documentType,
+                    documentNumber: client.documentNumber,
+                  });
+                }}
+              />
+            )}
+            ItemSeparatorComponent={() => <View style={styles.divider} />}
           />
         )}
-        ItemSeparatorComponent={() => <View style={styles.divider} />}
-      />
     </View>
   );
 };
@@ -67,7 +100,7 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
 const ClientModal: React.FC<IClientModal> = ({
   isVisible,
   setIsVisible,
-  setClient
+  setClient,
 }) => {
   return (
     <Modal visible={isVisible} style={styles.container}>
@@ -75,8 +108,12 @@ const ClientModal: React.FC<IClientModal> = ({
         title={'Seleccionar cliente'}
         alignment="left"
         leftButton={
-          <BackButton onClose={() => { setIsVisible(false); }
-          } />}
+          <BackButton
+            onClose={() => {
+              setIsVisible(false);
+            }}
+          />
+        }
       />
       <View style={styles.headerDivider} />
       <Clients setClient={setClient} setIsVisible={setIsVisible} />

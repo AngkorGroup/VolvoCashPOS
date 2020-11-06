@@ -1,20 +1,23 @@
+import React, { useState, useEffect } from 'react';
 import Button from 'components/button/Button';
 import ListItem from 'components/card/ListItem';
 import ExitButton from 'components/header/ExitButton';
 import Header from 'components/header/Header';
 import Icon from 'components/icon/Icon';
 import Search from 'components/input/Search';
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, RefreshControl } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import styles from './styles';
 import { unit } from 'utils/responsive';
-import movements from 'mocks/movements';
-import { formatDate } from 'utils/moment';
-import { ON_SITE_STACK, REMOTE_STACK } from 'utils/routes';
+import { ON_SITE_STACK, REMOTE_STACK, CHARGE_DETAIL } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
+import { api } from 'utils/api';
+import { Charge } from 'models/Charge';
+import { getUserName } from 'utils/storage';
+import { useDispatch } from 'react-redux';
+import { setChargeId } from 'utils/redux/chargeId/actions';
 
-type CardDetailTab = 'Presencial' | 'Remoto';
+type CardDetailTab = 'FaceToFace' | 'Remote';
 
 interface Movements {
   type: CardDetailTab;
@@ -22,19 +25,48 @@ interface Movements {
 
 const Movements: React.FC<Movements> = ({ type }) => {
   const [query, setQuery] = useState('');
-  const [filteredMovements, setFilteredMovements] = useState(movements);
+  const [loading, setLoading] = useState(false);
+  const [charges, setCharges] = useState<Charge[]>([]);
+  const [filteredMovements, setFilteredMovements] = useState<Charge[]>([]);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const refresh = () => {
+    setLoading(true);
+    setCharges([]);
+    setFilteredMovements([]);
+    api
+      .get(`charges?chargeType=${type}`)
+      .then((res) => {
+        setCharges(res);
+        setFilteredMovements(res);
+        console.log(res.map((r) => r.status));
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    refresh();
+  }, [type]);
 
   const handleChangeText = (text: string) => {
     const searchText = text.toLocaleLowerCase();
-    setQuery(searchText);
+    setQuery(text);
     setFilteredMovements(
-      movements.filter(
-        (movement) =>
-          movement.displayName.toLocaleLowerCase().includes(searchText) ||
-          formatDate(movement.date).includes(searchText) ||
-          movement.money.toString().includes(searchText),
+      charges.filter((charge) =>
+        (charge.description || '-').toLocaleLowerCase().includes(searchText),
       ),
     );
+  };
+
+  const goChargeDetail = (charge: Charge) => {
+    if (charge.status === 'Accepted') {
+      dispatch(setChargeId(charge.id));
+      navigation.navigate(CHARGE_DETAIL);
+    }
   };
 
   return (
@@ -46,18 +78,21 @@ const Movements: React.FC<Movements> = ({ type }) => {
         style={styles.search}
       />
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
         style-={styles.list}
         data={filteredMovements}
         keyExtractor={(movement) => movement.id.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: movement }) => (
           <ListItem
-            title={movement.displayName}
-            subtitle={formatDate(movement.date)}
-            value={movement.money.toString()}
-            type={type}
+            title={movement.displayName || '-'}
+            subtitle={movement.createdAt}
+            value={movement.amount.label}
             status={movement.status}
-            mode={movement.type === 'in' ? 'positive' : 'negative'}
+            mode={'positive'}
+            onPress={() => goChargeDetail(movement)}
           />
         )}
         ItemSeparatorComponent={() => <View style={styles.divider} />}
@@ -67,13 +102,25 @@ const Movements: React.FC<Movements> = ({ type }) => {
 };
 
 const CardDetailScreen = () => {
-  const [tab, setTab] = useState<CardDetailTab>('Presencial');
+  const [tab, setTab] = useState<CardDetailTab>('FaceToFace');
+  const [user, setUser] = useState('');
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(function () {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  getUserName().then((res) => {
+    setUser(res || '-');
+  });
 
   return (
     <View style={styles.container}>
       <Header
-        title={'Bienvenido, Usuario'}
+        title={`Bienvenido, ${user || '-'}`}
         alignment="center"
         rightButton={<ExitButton />}
       />
@@ -94,32 +141,32 @@ const CardDetailScreen = () => {
           style={[
             styles.leftButton,
             styles.button,
-            tab === 'Presencial' ? styles.active : styles.disabled,
+            tab === 'FaceToFace' ? styles.active : styles.disabled,
           ]}
           title="Presencial"
           textStyle={
-            tab === 'Presencial'
+            tab === 'FaceToFace'
               ? styles.activeTextButton
               : styles.disabledTextButton
           }
-          onPress={() => setTab('Presencial')}
+          onPress={() => setTab('FaceToFace')}
         />
         <Button
           style={[
             styles.rightButton,
             styles.button,
-            tab === 'Remoto' ? styles.active : styles.disabled,
+            tab === 'Remote' ? styles.active : styles.disabled,
           ]}
           title="Remoto"
           textStyle={
-            tab === 'Remoto'
+            tab === 'Remote'
               ? styles.activeTextButton
               : styles.disabledTextButton
           }
-          onPress={() => setTab('Remoto')}
+          onPress={() => setTab('Remote')}
         />
       </View>
-      <Movements type={tab} />
+      {!loading && <Movements type={tab} />}
     </View>
   );
 };

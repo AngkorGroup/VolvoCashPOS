@@ -16,7 +16,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* VolvoCashPOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* VolvoCashPOSTests.m */; };
+		4F0BEAFFC38BE6266B2F2A54 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE90B3F71C1F7FEAED686C1D /* libPods-OneSignalNotificationServiceExtension.a */; };
 		554D8C1557F2C5798E73C21D /* libPods-VolvoCashPOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301DBC47FE274AD23061CBAE /* libPods-VolvoCashPOS.a */; };
+		60B450F62555984A00CB0DC8 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B450F52555984A00CB0DC8 /* NotificationService.swift */; };
+		60B450FA2555984A00CB0DC8 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 60B450F32555984A00CB0DC8 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		60E5892625439CC6009FC690 /* VolvoBroadProDigital.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B72543988000FBA5BA /* VolvoBroadProDigital.otf */; };
 		60E5892725439CCA009FC690 /* VolvoNovum-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278AE2543987F00FBA5BA /* VolvoNovum-Bold.otf */; };
 		60E5892825439CE3009FC690 /* VolvoNovum-SemiLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 604278B22543987F00FBA5BA /* VolvoNovum-SemiLightItalic.otf */; };
@@ -48,7 +51,28 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "VolvoCashPOS-tvOS";
 		};
+		60B450F82555984A00CB0DC8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60B450F22555984A00CB0DC8;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60B450FE2555984A00CB0DC8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				60B450FA2555984A00CB0DC8 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -57,6 +81,7 @@
 		00E356F21AD99517003FC87E /* VolvoCashPOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VolvoCashPOSTests.m; sourceTree = "<group>"; };
 		06AA6390331E804E3B00B9C5 /* Pods-VolvoCashPOS-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS-tvOSTests/Pods-VolvoCashPOS-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		10A81654FB416D0996377D6D /* libPods-VolvoCashPOS-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VolvoCashPOS-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D373436372A732E2152469 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* VolvoCashPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolvoCashPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = VolvoCashPOS/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = VolvoCashPOS/AppDelegate.m; sourceTree = "<group>"; };
@@ -94,8 +119,14 @@
 		604278B62543988000FBA5BA /* VolvoNovum-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-Regular.otf"; sourceTree = "<group>"; };
 		604278B72543988000FBA5BA /* VolvoBroadProDigital.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VolvoBroadProDigital.otf; sourceTree = "<group>"; };
 		604278B82543988000FBA5BA /* VolvoNovum-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VolvoNovum-Light.otf"; sourceTree = "<group>"; };
+		60B450EE255597F400CB0DC8 /* VolvoCashPOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = VolvoCashPOS.entitlements; path = VolvoCashPOS/VolvoCashPOS.entitlements; sourceTree = "<group>"; };
+		60B450F32555984A00CB0DC8 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		60B450F52555984A00CB0DC8 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		60B450F72555984A00CB0DC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60E0061625559A9E00538EF2 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		631D76A182BC191FD153ACD0 /* Pods-VolvoCashPOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS.release.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS/Pods-VolvoCashPOS.release.xcconfig"; sourceTree = "<group>"; };
 		707BE8F3F7BBC2A8B9244133 /* libPods-VolvoCashPOS-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VolvoCashPOS-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		732D6CA3CC253F96DA40F9A6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		7FDA0C7A01F830CC9A948D4B /* Pods-VolvoCashPOS-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS-tvOS/Pods-VolvoCashPOS-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = VolvoCashPOS/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C4B3C52970974649A707B3D /* Pods-VolvoCashPOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS.debug.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS/Pods-VolvoCashPOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +136,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F6433AD45D824644807A9985 /* Pods-VolvoCashPOS-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolvoCashPOS-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-VolvoCashPOS-tvOSTests/Pods-VolvoCashPOS-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		F80ABE68332A367690E6CBE2 /* libPods-VolvoCashPOS-VolvoCashPOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VolvoCashPOS-VolvoCashPOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE90B3F71C1F7FEAED686C1D /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +172,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60B450F02555984A00CB0DC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F0BEAFFC38BE6266B2F2A54 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -163,6 +203,7 @@
 		13B07FAE1A68108700A75B9A /* VolvoCashPOS */ = {
 			isa = PBXGroup;
 			children = (
+				60B450EE255597F400CB0DC8 /* VolvoCashPOS.entitlements */,
 				6042788D25438DD000FBA5BA /* Fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -184,6 +225,7 @@
 				F80ABE68332A367690E6CBE2 /* libPods-VolvoCashPOS-VolvoCashPOSTests.a */,
 				10A81654FB416D0996377D6D /* libPods-VolvoCashPOS-tvOS.a */,
 				707BE8F3F7BBC2A8B9244133 /* libPods-VolvoCashPOS-tvOSTests.a */,
+				FE90B3F71C1F7FEAED686C1D /* libPods-OneSignalNotificationServiceExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,6 +241,8 @@
 				CFF961F6CC895F80D40CACF0 /* Pods-VolvoCashPOS-tvOS.release.xcconfig */,
 				06AA6390331E804E3B00B9C5 /* Pods-VolvoCashPOS-tvOSTests.debug.xcconfig */,
 				F6433AD45D824644807A9985 /* Pods-VolvoCashPOS-tvOSTests.release.xcconfig */,
+				10D373436372A732E2152469 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				732D6CA3CC253F96DA40F9A6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -237,6 +281,16 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		60B450F42555984A00CB0DC8 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				60E0061625559A9E00538EF2 /* OneSignalNotificationServiceExtension.entitlements */,
+				60B450F52555984A00CB0DC8 /* NotificationService.swift */,
+				60B450F72555984A00CB0DC8 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +304,7 @@
 				13B07FAE1A68108700A75B9A /* VolvoCashPOS */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* VolvoCashPOSTests */,
+				60B450F42555984A00CB0DC8 /* OneSignalNotificationServiceExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				5107F7E82B4270185C66C6A1 /* Pods */,
@@ -266,6 +321,7 @@
 				00E356EE1AD99517003FC87E /* VolvoCashPOSTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* VolvoCashPOS-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* VolvoCashPOS-tvOSTests.xctest */,
+				60B450F32555984A00CB0DC8 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,10 +360,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				8B161F3458EF4C8BE190FCFE /* [CP] Copy Pods Resources */,
+				60B450FE2555984A00CB0DC8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				60B450F92555984A00CB0DC8 /* PBXTargetDependency */,
 			);
 			name = VolvoCashPOS;
 			productName = VolvoCashPOS;
@@ -353,12 +411,31 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* VolvoCashPOS-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		60B450F22555984A00CB0DC8 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60B450FB2555984A00CB0DC8 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				C246A59931DA0E30DD31A7C7 /* [CP] Check Pods Manifest.lock */,
+				60B450EF2555984A00CB0DC8 /* Sources */,
+				60B450F02555984A00CB0DC8 /* Frameworks */,
+				60B450F12555984A00CB0DC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 60B450F32555984A00CB0DC8 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -368,6 +445,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 47Q8J9BGC6;
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -377,6 +455,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					60B450F22555984A00CB0DC8 = {
+						CreatedOnToolsVersion = 12.1;
+						DevelopmentTeam = 47Q8J9BGC6;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -397,6 +480,7 @@
 				00E356ED1AD99517003FC87E /* VolvoCashPOSTests */,
 				2D02E47A1E0B4A5D006451C7 /* VolvoCashPOS-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* VolvoCashPOS-tvOSTests */,
+				60B450F22555984A00CB0DC8 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -438,6 +522,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60B450F12555984A00CB0DC8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -641,6 +732,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VolvoCashPOS-VolvoCashPOSTests/Pods-VolvoCashPOS-VolvoCashPOSTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C246A59931DA0E30DD31A7C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EA66E5490B5476F6020990D2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -738,6 +851,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60B450EF2555984A00CB0DC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B450F62555984A00CB0DC8 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -750,6 +871,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* VolvoCashPOS-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		60B450F92555984A00CB0DC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60B450F22555984A00CB0DC8 /* OneSignalNotificationServiceExtension */;
+			targetProxy = 60B450F82555984A00CB0DC8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -801,20 +927,25 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C4B3C52970974649A707B3D /* Pods-VolvoCashPOS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = VolvoCashPOS/VolvoCashPOS.entitlements;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 47Q8J9BGC6;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VolvoCashPOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.angkorgroup.volvocashpos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.volvo.pos;
 				PRODUCT_NAME = VolvoCashPOS;
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.volvo.pos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -825,19 +956,25 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 631D76A182BC191FD153ACD0 /* Pods-VolvoCashPOS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = VolvoCashPOS/VolvoCashPOS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 47Q8J9BGC6;
 				INFOPLIST_FILE = VolvoCashPOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.angkorgroup.volvocashpos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.volvo.pos;
 				PRODUCT_NAME = VolvoCashPOS;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.volvo.pos";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -950,6 +1087,71 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VolvoCashPOS-tvOS.app/VolvoCashPOS-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
+		60B450FC2555984A00CB0DC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10D373436372A732E2152469 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 47Q8J9BGC6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.volvo.pos.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60B450FD2555984A00CB0DC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 732D6CA3CC253F96DA40F9A6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 47Q8J9BGC6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.volvo.pos.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1101,6 +1303,15 @@
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
 				2D02E49A1E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60B450FB2555984A00CB0DC8 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60B450FC2555984A00CB0DC8 /* Debug */,
+				60B450FD2555984A00CB0DC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

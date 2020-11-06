@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { theme } from 'utils/styles';
+import { theme, palette } from 'utils/styles';
 import { unit } from 'utils/responsive';
 
 export default StyleSheet.create({
@@ -9,17 +9,35 @@ export default StyleSheet.create({
   },
   list: {
     marginHorizontal: unit(30),
-    margin: unit(20)
+    margin: unit(20),
   },
   listContainer: {
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: unit(30)
+    paddingTop: unit(10),
+    borderLeftWidth: 5,
+    borderLeftColor: palette.granite,
+  },
+  headerDivider: {
+    ...theme.disabledSurface,
+    height: unit(20),
   },
   header: {
     ...theme.primary,
     ...theme.medium,
     fontFamily: 'VolvoNovum-Regular',
     marginVertical: unit(10),
+  },
+  divider: {
+    height: 1,
+    width: '83%',
+    alignSelf: 'flex-end',
+    backgroundColor: palette.granite,
+  },
+  fullDivider: {
+    height: 1,
+    alignSelf: 'flex-end',
+    width: '100%',
+    backgroundColor: palette.granite,
   },
 });
