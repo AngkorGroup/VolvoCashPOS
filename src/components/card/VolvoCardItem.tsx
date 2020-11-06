@@ -18,7 +18,7 @@ interface VolvoCardProps {
   onPress(): void;
 }
 
-const ListItem: React.FC<VolvoCardProps> = ({ card, onPress }) => {
+const VolvoCardItem: React.FC<VolvoCardProps> = ({ card, onPress }) => {
   const bgColor = {
     color: card.cardType.color,
   };
@@ -100,4 +100,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListItem;
+export default VolvoCardItem;

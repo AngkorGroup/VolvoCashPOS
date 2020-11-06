@@ -57,7 +57,6 @@ const LoginScreen = () => {
       {Boolean(error) &&
         Alert.alert('Error', 'Correo invalido.', [
           { text: 'OK', onPress: () => dispatch(cleanError()) },
-          ,
         ])}
       <SafeAreaView style={styles.safeContainer}>
         <View style={styles.container}>

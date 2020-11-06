@@ -1,5 +1,4 @@
 import { SET_PUSH_TOKEN } from '../actionsTypes';
-import { PushTokenState } from '../types';
 import { Action } from 'redux';
 
 export interface SetCharge extends Action {

@@ -14,7 +14,7 @@ export default function chargeReducer(
   state: ChargeIdState = initialState,
   action: SetCharge,
 ): ChargeIdState {
-  if (action.type === SET_CHARGE_ID) {
+  if (action?.type === SET_CHARGE_ID) {
     return {
       id: action.data,
     };

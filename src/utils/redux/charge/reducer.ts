@@ -4,7 +4,7 @@ import { SetCharge } from './actions';
 import { RootState } from '../rootReducer';
 import { selectChargeInfo } from '../rootSelector';
 
-const initialState = {
+const initialState: ChargeState = {
   cardToken: '',
   description: '',
   amount: 0,
