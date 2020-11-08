@@ -6,6 +6,11 @@ export interface SetCharge extends Action {
   data: string;
 }
 
+export interface NullAction extends Action {
+  type: string;
+  data: string;
+}
+
 export function setPushToken(data: string) {
   return {
     type: SET_PUSH_TOKEN,

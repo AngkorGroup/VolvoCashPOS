@@ -7,6 +7,11 @@ export interface SetCharge extends Action {
   data: ChargeState;
 }
 
+export interface NullAction extends Action {
+  type: string;
+  data: ChargeState;
+}
+
 export function setCharge(data: ChargeState) {
   return {
     type: SET_CHARGE,

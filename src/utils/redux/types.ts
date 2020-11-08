@@ -39,6 +39,7 @@ export interface IClient {
   id?: number;
 }
 export interface ChargeState {
+  imageUrl?: string;
   client?: IClient;
   cardToken?: string;
   description: string;
@@ -54,6 +55,7 @@ interface IAmount {
 
 export interface Charge {
   id: number;
+  imageUrl?: string;
   amount: IAmount;
   displayName: string;
   status: string;
@@ -67,6 +69,10 @@ export interface Charge {
 
 export interface PushTokenState {
   token: string;
+}
+
+export interface UpdateListState {
+  flag: boolean;
 }
 
 export interface ChargeIdState {

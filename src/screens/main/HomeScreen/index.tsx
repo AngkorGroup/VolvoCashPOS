@@ -14,16 +14,18 @@ import { useNavigation } from '@react-navigation/native';
 import { api } from 'utils/api';
 import { Charge } from 'models/Charge';
 import { getUserName } from 'utils/storage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setChargeId } from 'utils/redux/chargeId/actions';
+import { getUpdateFlag } from 'utils/redux/updateList/reducer';
 
 type CardDetailTab = 'FaceToFace' | 'Remote';
 
 interface Movements {
   type: CardDetailTab;
+  flag: boolean;
 }
 
-const Movements: React.FC<Movements> = ({ type }) => {
+const Movements: React.FC<Movements> = ({ type, flag }) => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [charges, setCharges] = useState<Charge[]>([]);
@@ -40,7 +42,6 @@ const Movements: React.FC<Movements> = ({ type }) => {
       .then((res) => {
         setCharges(res);
         setFilteredMovements(res);
-        console.log(res.map((r) => r.status));
         setLoading(false);
       })
       .catch(() => {
@@ -50,7 +51,7 @@ const Movements: React.FC<Movements> = ({ type }) => {
 
   useEffect(() => {
     refresh();
-  }, [type]);
+  }, [type, flag]);
 
   const handleChangeText = (text: string) => {
     const searchText = text.toLocaleLowerCase();
@@ -105,12 +106,13 @@ const CardDetailScreen = () => {
   const [tab, setTab] = useState<CardDetailTab>('FaceToFace');
   const [user, setUser] = useState('');
   const navigation = useNavigation();
+  const flag = useSelector(getUpdateFlag);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(function () {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   getUserName().then((res) => {
@@ -127,13 +129,15 @@ const CardDetailScreen = () => {
       <View style={styles.infoContainer}>
         <Button
           title="Cobro Presencial"
+          textStyle={styles.tabText}
           onPress={() => navigation.navigate(ON_SITE_STACK)}
-          icon={<Icon family="MaterialIcon" name="qr-code-2" size={unit(50)} />}
+          icon={<Icon family="MaterialIcon" name="qr-code-2" size={unit(48)} />}
         />
         <Button
           title="Cobro Remoto"
+          textStyle={styles.tabText}
           onPress={() => navigation.navigate(REMOTE_STACK)}
-          icon={<Icon family="Fontisto" name="paper-plane" size={unit(50)} />}
+          icon={<Icon family="Fontisto" name="paper-plane" size={unit(45)} />}
         />
       </View>
       <View style={styles.tabBar}>
@@ -166,7 +170,7 @@ const CardDetailScreen = () => {
           onPress={() => setTab('Remote')}
         />
       </View>
-      {!loading && <Movements type={tab} />}
+      {!loading && <Movements type={tab} flag={flag} />}
     </View>
   );
 };

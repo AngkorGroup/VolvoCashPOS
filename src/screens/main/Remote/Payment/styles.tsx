@@ -28,7 +28,7 @@ export default StyleSheet.create({
     marginBottom: unit(20),
   },
   buttonContainer: {
-    position: 'absolute',
-    bottom: unit(20),
+    // position: 'absolute',
+    // bottom: unit(20),
   },
 });

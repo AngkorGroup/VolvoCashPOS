@@ -4,6 +4,7 @@ import Header from 'components/header/Header';
 import { View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 import Button from 'components/button/Button';
+import ShareButton from 'components/button/Share';
 import InfoRow from 'components/card/InfoRow';
 import { theme } from 'utils/styles';
 import { palette } from 'utils/styles';
@@ -12,6 +13,7 @@ import { ChargeState } from 'utils/redux/types';
 interface IButtons {
   cancel: boolean;
   confirm: boolean;
+  share: boolean;
 }
 
 interface IDetail {
@@ -21,6 +23,7 @@ interface IDetail {
   onCancel?: Function;
   onConfirm?: Function;
   buttons: IButtons;
+  handleSharePress?: Function;
 }
 
 const DetailScreen: React.FC<IDetail> = ({
@@ -30,8 +33,8 @@ const DetailScreen: React.FC<IDetail> = ({
   onCancel = () => { },
   onConfirm = () => { },
   buttons,
+  handleSharePress = () => { },
 }) => {
-  console.log(loading);
   return (
     <View style={styles.container}>
       <Header title={header} alignment="center" rightButton={<CloseButton />} />
@@ -46,8 +49,6 @@ const DetailScreen: React.FC<IDetail> = ({
             {Boolean(chargeInfo.operationCode) && (
               <InfoRow label="Operación" value={`${chargeInfo.operationCode}`} />
             )}
-            <InfoRow label="Monto" value={`$ ${chargeInfo.amount}`} />
-            <InfoRow label="Concepto" value={chargeInfo.description} />
             <InfoRow
               label="Cliente"
               value={chargeInfo.client ? chargeInfo.client.name : '-'}
@@ -56,6 +57,20 @@ const DetailScreen: React.FC<IDetail> = ({
               label={chargeInfo.client ? chargeInfo.client.documentType : '-'}
               value={chargeInfo.client?.documentNumber || '-'}
             />
+            <InfoRow label="Concepto" value={chargeInfo.description} />
+            <InfoRow
+              textStyle={styles.amountRow}
+              label="Monto"
+              value={`$ ${chargeInfo.amount}`}
+            />
+            {buttons.share && chargeInfo.imageUrl && (
+              <View style={styles.shareContainer}>
+                <ShareButton
+                  onPress={() => handleSharePress(chargeInfo.imageUrl)}
+                />
+              </View>
+            )}
+
             <View style={styles.buttonsContainer}>
               {buttons.cancel && (
                 <Button

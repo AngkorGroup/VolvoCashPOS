@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import VolvoCard from 'components/card/VolvoCardItem';
+import VolvoCard, { getCurrency } from 'components/card/VolvoCardItem';
 import BackButton from 'components/header/BackButton';
 import Header from 'components/header/Header';
 import { View, FlatList, Modal, ActivityIndicator } from 'react-native';
@@ -57,7 +57,6 @@ const CardModal: React.FC<ICardModal> = ({
           />
         }
       />
-      <View style={styles.headerDivider} />
       <View style={styles.listContainer}>
         <View style={styles.fullDivider} />
         <FlatList
@@ -71,7 +70,9 @@ const CardModal: React.FC<ICardModal> = ({
               onPress={() => {
                 setCard({
                   cardToken: card.cardToken,
-                  title: card.cardType.name,
+                  title: `${card.cardType.displayName} ${getCurrency(
+                    card.cardType.currency,
+                  )}`,
                 });
                 setIsVisible(false);
               }}

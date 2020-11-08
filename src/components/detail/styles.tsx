@@ -25,4 +25,7 @@ export default StyleSheet.create({
   shareContainer: {
     marginTop: unit(30),
   },
+  amountRow: {
+    fontWeight: '700',
+  },
 });

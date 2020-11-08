@@ -14,8 +14,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    position: 'absolute',
-    bottom: unit(50),
+    // position: 'absolute',
+    // bottom: unit(50),
+    marginTop: unit(50),
   },
   keyboardContainer: {
     flex: 1,

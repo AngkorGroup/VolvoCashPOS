@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 2,
-    margin: 5,
+    alignSelf: 'flex-start',
   },
   title: {
     ...theme.small,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   subtitle: {
-    ...theme.small,
+    ...theme.tiny,
     ...theme.secondary,
     marginBottom: unit(5),
 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
   statusText: {
     color: 'white',
-    fontSize: unit(12),
+    ...theme.tiny,
   },
 });
 

@@ -16,7 +16,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingTop: unit(10),
     borderLeftWidth: 5,
-    borderLeftColor: palette.granite,
+    borderLeftColor: palette.ocean,
   },
   headerDivider: {
     ...theme.disabledSurface,
@@ -32,12 +32,12 @@ export default StyleSheet.create({
     height: 1,
     width: '83%',
     alignSelf: 'flex-end',
-    backgroundColor: palette.granite,
+    backgroundColor: palette.ocean,
   },
   fullDivider: {
     height: 1,
     alignSelf: 'flex-end',
     width: '100%',
-    backgroundColor: palette.granite,
+    backgroundColor: palette.ocean,
   },
 });

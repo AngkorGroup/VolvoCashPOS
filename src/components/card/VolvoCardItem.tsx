@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Card } from 'models/Card';
 import { unit } from 'utils/responsive';
-import { theme } from 'utils/styles';
+import { palette, theme } from 'utils/styles';
 import Icon from 'components/icon/Icon';
 
 const width = Dimensions.get('window').width;
@@ -17,6 +17,14 @@ interface VolvoCardProps {
   card: Card;
   onPress(): void;
 }
+
+export const getCurrency = (val: string) => {
+  if (val === 'PEN') {
+    return 'Soles';
+  } else {
+    return 'Dólares';
+  }
+};
 
 const VolvoCardItem: React.FC<VolvoCardProps> = ({ card, onPress }) => {
   const bgColor = {
@@ -33,7 +41,9 @@ const VolvoCardItem: React.FC<VolvoCardProps> = ({ card, onPress }) => {
       </View>
       <View style={styles.infoContainer}>
         <View>
-          <Text style={styles.subtitle}>{card.cardType.displayName}</Text>
+          <Text style={styles.subtitle}>
+            {card.cardType.displayName} {getCurrency(card.cardType.currency)}
+          </Text>
           <Text ellipsizeMode={'tail'} numberOfLines={1} style={styles.title}>
             {card.calculatedBalance.label}
           </Text>
@@ -62,17 +72,19 @@ const styles = StyleSheet.create({
   infoContainer: {
     justifyContent: 'space-between',
     width: width * 0.8,
+    // backgroundColor: 'blue',
     alignContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
   arrow: {
     marginRight: 15,
-    fontSize: 20,
+    fontSize: 15,
+    color: palette.ocean,
   },
   icon: {
     fontSize: 45,
-    marginRight: 15,
+    marginRight: 10,
   },
   title: {
     ...theme.primary,
@@ -80,22 +92,21 @@ const styles = StyleSheet.create({
     fontSize: unit(20),
     marginBottom: unit(5),
     alignSelf: 'flex-start',
-    fontWeight: '700',
-    lineHeight: 20,
+    fontWeight: '600',
+    color: palette.black,
+    lineHeight: unit(20),
   },
   subtitle: {
     ...theme.small,
     ...theme.secondary,
     marginBottom: unit(5),
-    color: 'black',
-
+    color: palette.black,
     alignSelf: 'flex-start',
-    fontWeight: '700',
   },
   info: {
     ...theme.secondary,
     marginBottom: unit(5),
-    lineHeight: 12,
+    lineHeight: unit(12),
     fontSize: unit(12),
   },
 });

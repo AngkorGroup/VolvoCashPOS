@@ -75,12 +75,12 @@ export const theme = {
     fontFamily: 'VolvoNovum-Medium',
   },
   small: {
-    fontSize: unit(15),
-    fontFamily: 'VolvoNovum-Regular',
+    fontSize: unit(13),
+    fontFamily: 'VolvoNovum-Medium',
   },
   tiny: {
-    fontSize: unit(12),
-    fontFamily: 'VolvoNovum-Medium',
+    fontSize: unit(11),
+    fontFamily: 'VolvoNovum-Regular',
   },
 };
 
