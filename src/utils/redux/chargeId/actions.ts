@@ -6,6 +6,11 @@ export interface SetCharge extends Action {
   data: number;
 }
 
+export interface NullAction extends Action {
+  type: string;
+  data: number;
+}
+
 export function setChargeId(data: number) {
   return {
     type: SET_CHARGE_ID,

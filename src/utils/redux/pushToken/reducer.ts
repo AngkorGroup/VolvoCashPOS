@@ -1,6 +1,6 @@
 import { SET_PUSH_TOKEN } from '../actionsTypes';
 import { PushTokenState } from '../types';
-import { SetCharge } from './actions';
+import { SetCharge, NullAction } from './actions';
 import { RootState } from '../rootReducer';
 import { selectPushToken } from '../rootSelector';
 
@@ -12,7 +12,7 @@ export const getPushToken = (state: RootState) => selectPushToken(state).token;
 
 export default function chargeReducer(
   state: PushTokenState = initialState,
-  action: SetCharge,
+  action: SetCharge | NullAction = { type: '', data: '' },
 ): PushTokenState {
   if (action.type === SET_PUSH_TOKEN) {
     return {

@@ -6,6 +6,7 @@ export interface CardType {
   name: string;
   displayName: string;
   color: string;
+  currency: Currency;
 }
 
 interface Balance {

@@ -9,3 +9,5 @@ export const SET_CHARGE = 'SET_CHARGE';
 export const SET_PUSH_TOKEN = 'SET_PUSH_TOKEN';
 
 export const SET_CHARGE_ID = 'SET_CHARGE_ID';
+
+export const UPDATE_LIST = 'UPDATE_LIST';

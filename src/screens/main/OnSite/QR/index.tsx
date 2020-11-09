@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { getChargeInfo } from 'utils/redux/charge/reducer';
 import { useDispatch } from 'react-redux';
 import { setCharge } from 'utils/redux/charge/actions';
+import { updateList } from 'utils/redux/updateList/actions';
 import styles from './styles';
 
 const TransfersScreen = () => {
@@ -35,7 +36,6 @@ const TransfersScreen = () => {
     api
       .post('charges', payload)
       .then((res) => {
-        console.log('resss', res);
         setLoading(false);
         dispatch(
           setCharge({
@@ -47,6 +47,8 @@ const TransfersScreen = () => {
             },
           }),
         );
+        dispatch(updateList());
+        Alert.alert('Cobro exitoso', 'Se ha generado el cobro correctamente.');
         navigation.navigate(HOME_SCREEN);
       })
       .catch(() => {

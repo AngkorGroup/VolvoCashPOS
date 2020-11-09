@@ -1,6 +1,6 @@
 import { SET_CHARGE } from '../actionsTypes';
 import { ChargeState } from '../types';
-import { SetCharge } from './actions';
+import { SetCharge, NullAction } from './actions';
 import { RootState } from '../rootReducer';
 import { selectChargeInfo } from '../rootSelector';
 
@@ -20,7 +20,7 @@ export const getChargeInfo = (state: RootState) => selectChargeInfo(state);
 
 export default function chargeReducer(
   state: ChargeState = initialState,
-  action: SetCharge,
+  action: SetCharge | NullAction = { type: '', data: initialState },
 ): ChargeState {
   if (action.type === SET_CHARGE) {
     return {

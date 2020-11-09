@@ -6,12 +6,14 @@ import { LogBox } from 'react-native';
 import OneSignal from 'react-native-onesignal';
 import { useDispatch } from 'react-redux';
 import { setAuth } from 'utils/redux/auth/actions';
+import { setChargeId } from 'utils/redux/chargeId/actions';
 import { setPushToken } from 'utils/redux/pushToken/actions';
 import { getUserToken } from 'utils/storage';
-import { PUSH_TOKEN } from '@env';
+import { PUSH_TOKEN, API_URL } from '@env';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { navigationRef } from './utils/navigation';
+import { navigationRef, navigate } from './utils/navigation';
+import { CHARGE_DETAIL } from 'utils/routes';
 
 LogBox.ignoreLogs(['Sending onAnimatedValueUpdate']);
 
@@ -19,6 +21,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     ReactNativeSplashScreen.hide();
+    console.warn(API_URL);
     OneSignal.init(PUSH_TOKEN);
     OneSignal.addEventListener('received', onReceived);
     OneSignal.addEventListener('opened', onOpened);
@@ -29,26 +32,24 @@ const App = () => {
     });
 
     return () => {
-      OneSignal.removeEventListener('opened', onOpened);
+      OneSignal.removeEventListener('opened', onReceived);
       OneSignal.removeEventListener('ids', onOpened);
-      OneSignal.removeEventListener('received', onOpened);
+      OneSignal.removeEventListener('received', onIds);
     };
   }, []);
 
-  function onOpened(notification: any) {
-    const push = notification.payload.additionalData;
-    // TODO: redirect to confirmation screen
-    console.log(push);
-  }
+  function onOpened() { }
 
   function onIds(device: any) {
-    dispatch(setPushToken(device.pushToken));
+    dispatch(setPushToken(device.userId));
   }
 
   function onReceived(notification: any) {
-    const push = notification.payload.additionalData;
-    // TODO: redirect to confirmation screen
-    console.log(push);
+    const push = notification.payload?.additionalData;
+    if (push && push.chargeId) {
+      dispatch(setChargeId(push.chargeId));
+      navigate(CHARGE_DETAIL);
+    }
   }
 
   return (

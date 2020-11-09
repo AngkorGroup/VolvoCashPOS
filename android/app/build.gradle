@@ -139,12 +139,12 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.volvocashpos"
+        applicationId "com.volvo.pos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 9
+        versionName "1.0.8"
         missingDimensionStrategy 'react-native-camera', 'general'
     }
     splits {
