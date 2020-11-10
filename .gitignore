@@ -63,3 +63,8 @@ buck-out/
 /ios/Pods/
 
 .env
+.env.production
+.env.development
+
+*.apk
+*.aab

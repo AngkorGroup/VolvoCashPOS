@@ -24,6 +24,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>ITSEncryptionExportComplianceCode</key>
+	<string>NO</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -47,8 +51,10 @@
 	<array>
 		<string></string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Esta applicación necesita permiso para usar la cámara</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Esta applicación necesita permiso para usar la cámara</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -83,6 +89,11 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>SplashImage</string>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -47,7 +47,7 @@ export class Api {
         .get(url, { headers })
         .then((response) => response.data)
         .catch((err) => {
-          throw err;
+          throw err.response?.data.errorMessage;
         }),
     );
   }
@@ -58,7 +58,7 @@ export class Api {
         .post(url, body, { headers })
         .then((response) => response.data)
         .catch((err) => {
-          throw err;
+          throw err.response?.data.errorMessage;
         }),
     );
   }
@@ -69,7 +69,7 @@ export class Api {
         .put(url, body, { headers })
         .then((response) => response.data)
         .catch((err) => {
-          throw err;
+          throw err.response?.data.errorMessage;
         }),
     );
   }
@@ -80,7 +80,7 @@ export class Api {
         .delete(url, { headers })
         .then((response) => response.data)
         .catch((err) => {
-          throw err;
+          throw err.response?.data.errorMessage;
         }),
     );
   }

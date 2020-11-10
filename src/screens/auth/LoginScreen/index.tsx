@@ -36,7 +36,7 @@ const LoginScreen = () => {
 
   const loginUser = () => {
     if (!validEmail()) {
-      return Alert.alert('Error', 'Correo invalido.');
+      return Alert.alert('Error', 'Correo inválido.');
     }
 
     if (!email || !password) {
@@ -55,7 +55,7 @@ const LoginScreen = () => {
   return (
     <FastImage source={require('assets/images/pos-bg.png')} style={styles.bg}>
       {Boolean(error) &&
-        Alert.alert('Error', 'Correo invalido.', [
+        Alert.alert('Error', error, [
           { text: 'OK', onPress: () => dispatch(cleanError()) },
         ])}
       <SafeAreaView style={styles.safeContainer}>
