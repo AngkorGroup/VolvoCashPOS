@@ -9,7 +9,7 @@ import { setAuth } from 'utils/redux/auth/actions';
 import { setChargeId } from 'utils/redux/chargeId/actions';
 import { setPushToken } from 'utils/redux/pushToken/actions';
 import { getUserToken } from 'utils/storage';
-import { PUSH_TOKEN, API_URL } from '@env';
+import { PUSH_TOKEN } from '@env';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { navigationRef, navigate } from './utils/navigation';
@@ -21,7 +21,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     ReactNativeSplashScreen.hide();
-    OneSignal.init('f27b0bb2-04df-4705-b418-9a4025528379');
+    OneSignal.init(PUSH_TOKEN);
     OneSignal.addEventListener('received', onReceived);
     OneSignal.addEventListener('opened', onOpened);
     OneSignal.addEventListener('ids', onIds);

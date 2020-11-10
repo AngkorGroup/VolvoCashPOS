@@ -25,7 +25,7 @@ export class Api {
 
     this.token = json.token || '';
     this.api = axios.create({
-      baseURL: 'https://stage-volvocash.angkor-apps.com/api_pos/',
+      baseURL: API_URL,
     });
   }
 
@@ -47,7 +47,7 @@ export class Api {
         .get(url, { headers })
         .then((response) => response.data)
         .catch((err) => {
-          throw `${err.message} ${API_URL}`;
+          throw err.response?.data.errorMessage;
         }),
     );
   }
