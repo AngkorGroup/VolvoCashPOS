@@ -67,4 +67,4 @@ buck-out/
 .env.development
 
 *.apk
-# *.aab
+*.aab
