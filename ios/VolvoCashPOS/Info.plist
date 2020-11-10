@@ -47,8 +47,10 @@
 	<array>
 		<string></string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Esta applicación necesita permiso para usar la cámara</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Esta applicación necesita permiso para usar la cámara</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -95,6 +97,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>ITSEncryptionExportComplianceCode</key>
+	<string>NO</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

@@ -21,8 +21,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     ReactNativeSplashScreen.hide();
-    console.warn(API_URL);
-    OneSignal.init(PUSH_TOKEN);
+    OneSignal.init('f27b0bb2-04df-4705-b418-9a4025528379');
     OneSignal.addEventListener('received', onReceived);
     OneSignal.addEventListener('opened', onOpened);
     OneSignal.addEventListener('ids', onIds);

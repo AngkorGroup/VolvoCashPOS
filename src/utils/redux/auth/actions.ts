@@ -17,6 +17,7 @@ export interface LoginRequest extends Action {
 
 export interface LoginFailure extends Action {
   type: typeof LOGIN_FAILURE;
+  error: string;
 }
 
 export interface Logout extends Action {
@@ -101,9 +102,13 @@ export const login = (userData: UserData) => (dispatch: any) => {
   api
     .post('login', userData)
     .then((res) => {
-      setUserToken(res.authToken);
-      setUserName(res.cashier.fullName);
-      dispatch(loginSuccess(res));
+      if (res) {
+        setUserToken(res.authToken);
+        dispatch(loginSuccess(res));
+      }
+      if (res.cashier) {
+        setUserName(res.cashier.fullName);
+      }
     })
     .catch((err) => {
       dispatch(loginFailure(err));

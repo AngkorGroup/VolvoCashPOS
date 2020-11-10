@@ -68,7 +68,7 @@ export default function loginReducer(
         data: action.data,
       };
     case LOGIN_FAILURE:
-      return { ...initialState, error: errorMessage };
+      return { ...initialState, error: action.error };
     default:
       return state;
   }
