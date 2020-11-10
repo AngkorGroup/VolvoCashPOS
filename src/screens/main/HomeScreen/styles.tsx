@@ -26,11 +26,15 @@ export default StyleSheet.create({
   disabledTextButton: {
     fontSize: unit(15),
   },
+  tabText: {
+    fontWeight: '700',
+    fontSize: unit(16),
+  },
   button: {
     height: unit(27),
     width: unit(150),
     borderColor: palette.ocean,
-    borderWidth: unit(1),
+    borderWidth: 1,
   },
   leftButton: {
     borderTopRightRadius: 0,

@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import { API_URL } from '@env';
+import { getUserToken } from './storage';
 
 export interface IToken {
   token?: string;
@@ -21,52 +22,67 @@ export class Api {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     };
+
     this.token = json.token || '';
     this.api = axios.create({
       baseURL: API_URL,
     });
   }
 
-  setToken(token: string) {
-    this.headers = {
-      ...this.headers,
-      Authorization: `Bearer ${token}`,
-    };
-  }
-
-  getHeaders() {
-    return this.headers;
+  generateHeaders() {
+    return getUserToken().then((token) => {
+      if (!token) {
+        return this.headers;
+      }
+      return {
+        ...this.headers,
+        Authorization: `Bearer ${token}`,
+      };
+    });
   }
 
   get(url: string) {
-    return this.api
-      .get(url, { headers: this.headers })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.log(err.response);
-        throw err.message;
-      });
+    return this.generateHeaders().then((headers) =>
+      this.api
+        .get(url, { headers })
+        .then((response) => response.data)
+        .catch((err) => {
+          throw err.response?.data.errorMessage;
+        }),
+    );
   }
 
   post(url: string, body: any) {
-    console.warn(url);
-    return this.api
-      .post(url, body, { headers: this.headers })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.log(err.message);
-        throw err.message;
-      });
+    return this.generateHeaders().then((headers) =>
+      this.api
+        .post(url, body, { headers })
+        .then((response) => response.data)
+        .catch((err) => {
+          throw err.response?.data.errorMessage;
+        }),
+    );
   }
 
   put(url: string, body: any) {
-    return this.api
-      .put(url, body, { headers: this.headers })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.log(err.response);
-        throw err.message;
-      });
+    return this.generateHeaders().then((headers) =>
+      this.api
+        .put(url, body, { headers })
+        .then((response) => response.data)
+        .catch((err) => {
+          throw err.response?.data.errorMessage;
+        }),
+    );
+  }
+
+  delete(url: string) {
+    return this.generateHeaders().then((headers) =>
+      this.api
+        .delete(url, { headers })
+        .then((response) => response.data)
+        .catch((err) => {
+          throw err.response?.data.errorMessage;
+        }),
+    );
   }
 }
 

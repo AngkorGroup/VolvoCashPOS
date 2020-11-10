@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    borderRadius: unit(20),
+    borderRadius: unit(8),
   },
   textContainer: {
     flex: 1,

@@ -1,13 +1,15 @@
 import { api } from 'utils/api';
 import { Action } from 'redux';
-// import { Dispa /tch } from 'react-redux';
 import { Auth } from '../types';
 import {
   LOGIN_SUCCESS,
   LOGIN_REQUEST,
   LOGIN_FAILURE,
   LOGOUT_USER,
+  CLEAR_AUTH_ERROR,
+  SET_AUTH,
 } from '../actionsTypes';
+import { setUserToken, setUserName } from 'utils/storage';
 
 export interface LoginRequest extends Action {
   type: typeof LOGIN_REQUEST;
@@ -15,10 +17,15 @@ export interface LoginRequest extends Action {
 
 export interface LoginFailure extends Action {
   type: typeof LOGIN_FAILURE;
+  error: string;
 }
 
 export interface Logout extends Action {
   type: typeof LOGOUT_USER;
+}
+
+export interface CleanError extends Action {
+  type: typeof CLEAR_AUTH_ERROR;
 }
 
 export interface LoginSuccess extends Action {
@@ -26,7 +33,18 @@ export interface LoginSuccess extends Action {
   data: Auth;
 }
 
-export type AuthActions = LoginRequest | LoginFailure | LoginSuccess | Logout;
+export interface SetAuth extends Action {
+  type: typeof SET_AUTH;
+  auth: boolean;
+}
+
+export type AuthActions =
+  | LoginRequest
+  | LoginFailure
+  | LoginSuccess
+  | Logout
+  | SetAuth
+  | CleanError;
 
 interface UserData {
   email: string;
@@ -55,7 +73,28 @@ const loginSuccess = (data: Auth) => {
 };
 
 export const logout = () => (dispatch: any) => {
-  dispatch({ type: LOGOUT_USER });
+  api
+    .delete('logout')
+    .then(() => {
+      setUserToken('');
+      dispatch({ type: LOGOUT_USER });
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+};
+
+export const setAuth = (auth: boolean) => {
+  return {
+    type: SET_AUTH,
+    auth,
+  };
+};
+
+export const cleanError = () => {
+  return {
+    type: CLEAR_AUTH_ERROR,
+  };
 };
 
 export const login = (userData: UserData) => (dispatch: any) => {
@@ -63,8 +102,13 @@ export const login = (userData: UserData) => (dispatch: any) => {
   api
     .post('login', userData)
     .then((res) => {
-      api.setToken(res.authToken);
-      dispatch(loginSuccess(res));
+      if (res) {
+        setUserToken(res.authToken);
+        dispatch(loginSuccess(res));
+      }
+      if (res.cashier) {
+        setUserName(res.cashier.fullName);
+      }
     })
     .catch((err) => {
       dispatch(loginFailure(err));

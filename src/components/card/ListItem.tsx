@@ -1,48 +1,67 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import { unit } from 'utils/responsive';
 import { theme, palette } from 'utils/styles';
+import { Status } from 'models/Charge';
 
 const width = Dimensions.get('window').width;
 
 type Mode = 'positive' | 'negative';
-
-type CardDetailTab = 'Presencial' | 'Remoto';
-
-type Status = 'Pendiente' | 'Rechazado' | 'Aprobado' | undefined;
 
 interface ListItem {
   title: string;
   subtitle: string;
   value: string;
   mode: Mode;
-  type: CardDetailTab;
-  status: Status;
+  status?: Status;
+  onPress: Function;
 }
 
 const getStyleByStatus = (status: Status) => {
   switch (status) {
-    case 'Pendiente':
+    case 'Pending':
       return 'pending';
-    case 'Aprobado':
+    case 'Accepted':
       return 'approved';
-    case 'Rechazado':
+    case 'Rejected':
+    case 'Canceled':
       return 'rejected';
     default:
       return 'approved';
   }
 };
 
+const getStatusLabel = (status: Status) => {
+  switch (status) {
+    case 'Pending':
+      return 'Pendiente';
+    case 'Accepted':
+      return 'Aceptado';
+    case 'Rejected':
+      return 'Rechazado';
+    case 'Canceled':
+      return 'Cancelado';
+    default:
+      return 'Pendiente';
+  }
+};
+
 const ListItem: React.FC<ListItem> = ({
   title,
-  type,
   subtitle,
   value,
   mode,
   status = undefined,
+  onPress = () => { },
 }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <View>
         <View style={styles.leftContainer}>
           <Text ellipsizeMode={'tail'} numberOfLines={1} style={styles.title}>
@@ -51,17 +70,17 @@ const ListItem: React.FC<ListItem> = ({
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-      {type === 'Remoto' && status && (
+      {status && (
         <View style={[styles.badge, styles[getStyleByStatus(status)]]}>
           <Text style={styles.statusText} numberOfLines={1}>
-            {status}
+            {getStatusLabel(status)}
           </Text>
         </View>
       )}
       <View style={styles.rightContainer}>
         <Text style={[styles[mode], styles.number]}>{value}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -76,7 +95,7 @@ const styles = StyleSheet.create({
   },
   leftContainer: {
     alignSelf: 'flex-start',
-    width: width * 0.4,
+    width: width * 0.44,
   },
   rightContainer: {
     alignItems: 'flex-end',
@@ -94,28 +113,31 @@ const styles = StyleSheet.create({
   pending: {
     backgroundColor: palette.orange,
   },
-  approved: {},
+  approved: {
+    ...theme.small,
+    ...theme.accepted,
+  },
   rejected: {
     backgroundColor: palette.raspberry,
   },
   badge: {
     borderRadius: unit(20),
-    width: unit(90),
+    width: unit(65),
     height: unit(18),
     alignItems: 'center',
     justifyContent: 'center',
     padding: 2,
-    margin: 5,
+    alignSelf: 'flex-start',
   },
   title: {
     ...theme.small,
     ...theme.primary,
     marginBottom: unit(5),
-    fontSize: unit(14),
+    fontSize: unit(13),
     alignSelf: 'flex-start',
   },
   subtitle: {
-    ...theme.small,
+    ...theme.tiny,
     ...theme.secondary,
     marginBottom: unit(5),
 
@@ -127,7 +149,7 @@ const styles = StyleSheet.create({
   },
   statusText: {
     color: 'white',
-    fontSize: unit(12),
+    ...theme.tiny,
   },
 });
 

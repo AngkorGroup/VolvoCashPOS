@@ -1,4 +1,4 @@
-package com.volvocashpos;
+package com.volvo.pos;
 
 import android.os.Bundle;
 

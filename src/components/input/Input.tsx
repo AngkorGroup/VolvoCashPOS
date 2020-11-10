@@ -1,6 +1,12 @@
 import Icon, { IconFamily } from '../icon/Icon';
 import React from 'react';
-import { StyleSheet, Text, TextInputProps, View, ViewStyle } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInputProps,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { unit } from 'utils/responsive';
 import { theme } from 'utils/styles';
@@ -10,7 +16,6 @@ interface InputProps {
   iconFamily?: IconFamily;
   iconName?: string;
   containerStyle?: ViewStyle;
-  formattedValue?: string;
   currency?: string;
 }
 
@@ -19,7 +24,6 @@ const Input: React.FC<InputProps & TextInputProps & ViewStyle> = ({
   iconFamily,
   iconName,
   containerStyle,
-  formattedValue,
   currency,
   ...props
 }) => {
@@ -36,7 +40,9 @@ const Input: React.FC<InputProps & TextInputProps & ViewStyle> = ({
   }
   return (
     <View style={containerStyles}>
-      {iconName && iconFamily && <Icon family={iconFamily} name={iconName} style={styles.icon} />}
+      {iconName && iconFamily && (
+        <Icon family={iconFamily} name={iconName} style={styles.icon} />
+      )}
       {currency && <Text style={styles.inputMargin}>{currency}</Text>}
       <TextInput
         style={inputStyles}
@@ -58,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    borderRadius: unit(30),
+    borderRadius: unit(6),
     position: 'relative',
   },
   inputMargin: {
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
   },
   formattedContainer: {
     position: 'absolute',
-    left: 0
+    left: 0,
   },
   input: {
     flex: 1,

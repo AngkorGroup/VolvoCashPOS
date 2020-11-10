@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.9, 0.99.99]'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -129,12 +139,12 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.volvocashpos"
+        applicationId "com.volvo.pos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 10
+        versionName "1.0.9"
         missingDimensionStrategy 'react-native-camera', 'general'
     }
     splits {

@@ -8,7 +8,8 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { ViewStyle } from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { ViewStyle, TextStyle } from 'react-native';
 import { theme } from 'utils/styles';
 import { unit } from 'utils/responsive';
 
@@ -32,6 +33,8 @@ const useIconFamily = (family: IconFamily): any => {
       return Entypo;
     case 'Fontisto':
       return Fontisto;
+    case 'AntDesign':
+      return AntDesign;
     default:
       return null;
   }
@@ -46,12 +49,13 @@ export type IconFamily =
   | 'MaterialCommunityIcons'
   | 'Entypo'
   | 'Fontisto'
-  | 'EvilIcons';
+  | 'EvilIcons'
+  | 'AntDesign';
 
 interface IconProps {
   family: IconFamily;
   name: string;
-  style?: ViewStyle;
+  style?: ViewStyle | TextStyle;
   size?: number;
   color?: string;
 }

@@ -1,10 +1,18 @@
-import { Currency, Money } from './Money';
+import { Currency } from './Money';
+import { Contact } from './Contact';
 
 export interface CardType {
   id: number;
   name: string;
   displayName: string;
   color: string;
+  currency: Currency;
+}
+
+interface Balance {
+  value: number;
+  currency: string;
+  label: string;
 }
 
 type OwnerType = 'primary' | 'secondary';
@@ -12,40 +20,21 @@ type OwnerType = 'primary' | 'secondary';
 export interface ICard {
   id: number;
   cardType: CardType;
-  balance: number;
+  balance: Balance;
+  calculatedBalance: Balance;
   currency: Currency;
   imageUrl?: string;
-  ownerName?: string;
-  qrUrl?: string;
+  contact: Contact;
   ownerType: OwnerType;
 }
 
-export class Card {
-  public id: number;
-  public cardType: CardType;
-  public balance: number;
-  public currency: Currency;
-  public imageUrl?: string;
-  public ownerName?: string;
-  public qrUrl?: string;
-  public ownerType: OwnerType;
-
-  constructor(json: ICard) {
-    this.id = json.id;
-    this.cardType = json.cardType;
-    this.balance = json.balance;
-    this.imageUrl = json.imageUrl;
-    this.ownerName = json.ownerName;
-    this.qrUrl = json.qrUrl;
-    this.currency = json.currency;
-    this.ownerType = json.ownerType;
-  }
-
-  get color() {
-    return this.cardType.color;
-  }
-
-  get money() {
-    return new Money(this.balance, this.currency).toString();
-  }
+export interface Card {
+  id: number;
+  code: string;
+  cardType: CardType;
+  balance: Balance;
+  imageUrl?: string;
+  calculatedBalance: Balance;
+  contact: Contact;
+  cardToken: string;
 }

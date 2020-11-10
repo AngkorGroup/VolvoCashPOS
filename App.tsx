@@ -1,32 +1,18 @@
 import 'react-native-gesture-handler';
-import React, { useEffect } from 'react';
-import ReactNativeSplashScreen from 'react-native-splash-screen';
-import { NavigationContainer } from '@react-navigation/native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { navigationRef } from './src/utils/navigation';
-import AuthLoading from './src/screens/auth/AuthLoading';
-import { LogBox } from 'react-native';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
+
 import thunk from 'redux-thunk';
 import rootReducer from 'utils/redux/rootReducer';
-
-LogBox.ignoreLogs(['Sending onAnimatedValueUpdate']);
-const middleware = applyMiddleware(thunk);
-const store = createStore(rootReducer, middleware);
+import InitScreen from './src/App';
 
 const App = () => {
-  useEffect(() => {
-    ReactNativeSplashScreen.hide();
-  }, []);
-
+  const middleware = applyMiddleware(thunk);
+  const store = createStore(rootReducer, middleware);
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
-        <NavigationContainer ref={navigationRef}>
-          <AuthLoading />
-        </NavigationContainer>
-      </SafeAreaProvider>
+      <InitScreen />
     </Provider>
   );
 };

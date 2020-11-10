@@ -3,6 +3,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_USER,
+  SET_AUTH,
+  CLEAR_AUTH_ERROR,
 } from '../actionsTypes';
 import { Auth } from '../types';
 import { AuthActions } from './actions';
@@ -26,13 +28,29 @@ const initialState = {
 export const getIsAuthenticated = (state: RootState) =>
   selectAuth(state).isAuthenticated;
 
-const errorMessage = 'Email or password is incorrect';
+export const getUser = (state: RootState) => selectAuth(state).data;
+
+export const getIsFetching = (state: RootState) => selectAuth(state).isFetching;
+
+export const getError = (state: RootState) => selectAuth(state).error;
+
+const errorMessage = 'Correo o contraseña incorrectos';
 
 export default function loginReducer(
   state: AuthState = initialState,
   action: AuthActions,
 ): AuthState {
   switch (action.type) {
+    case SET_AUTH:
+      return {
+        ...state,
+        isAuthenticated: action.auth,
+      };
+    case CLEAR_AUTH_ERROR:
+      return {
+        ...state,
+        error: '',
+      };
     case LOGOUT_USER:
       return {
         ...state,
@@ -50,7 +68,7 @@ export default function loginReducer(
         data: action.data,
       };
     case LOGIN_FAILURE:
-      return { ...initialState, error: errorMessage };
+      return { ...initialState, error: action.error };
     default:
       return state;
   }
