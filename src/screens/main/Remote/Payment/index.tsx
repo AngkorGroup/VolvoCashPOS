@@ -21,9 +21,10 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setCharge } from 'utils/redux/charge/actions';
 import { IClient } from 'utils/redux/types';
+import CurrencyInput from 'components/input/CurrencyInput';
 
 const PaymentScreen = () => {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [concept, setConcept] = useState('');
   const [client, setClient] = useState<IClient>({
     name: '',
@@ -37,18 +38,16 @@ const PaymentScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const setOnlyNumbers = (val: String) => {
-    return setAmount(val.replace(/[^\d,]+/, ''));
-  };
-
   const goToConfirmationScreen = () => {
     if (!amount || !concept || !client.id || !card.cardToken) {
       return Alert.alert('Error', 'Llenar todos los datos para continuar.');
     }
-
     dispatch(
       setCharge({
-        amount: parseInt(amount, 10),
+        amount: amount / 100,
+        amountLabel: `US$ ${(amount / 100)
+          .toFixed(2)
+          .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`,
         cardToken: card.cardToken,
         description: concept,
         client,
@@ -70,13 +69,11 @@ const PaymentScreen = () => {
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           keyboardVerticalOffset={Platform.OS === 'ios' ? unit(40) : 0}>
           <Text style={styles.label}>Monto</Text>
-          <Input
+          <CurrencyInput
+            max={10000000}
             placeholder=""
+            onValueChange={setAmount}
             value={amount}
-            currency="$"
-            onChangeText={setOnlyNumbers}
-            keyboardType="numeric"
-            containerStyle={styles.input}
           />
           <Text style={styles.label}>Concepto</Text>
           <Input

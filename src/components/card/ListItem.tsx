@@ -70,7 +70,7 @@ const ListItem: React.FC<ListItem> = ({
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-      {status && (
+      {status && status !== 'Accepted' && (
         <View style={[styles.badge, styles[getStyleByStatus(status)]]}>
           <Text style={styles.statusText} numberOfLines={1}>
             {getStatusLabel(status)}

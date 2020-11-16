@@ -61,7 +61,7 @@ const DetailScreen: React.FC<IDetail> = ({
             <InfoRow
               textStyle={styles.amountRow}
               label="Monto"
-              value={`$ ${chargeInfo.amount}`}
+              value={chargeInfo.amountLabel}
             />
             {buttons.share && chargeInfo.imageUrl && (
               <View style={styles.shareContainer}>
