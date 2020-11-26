@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
   Text,
+  ScrollView,
 } from 'react-native';
 import styles from './styles';
 import BackButton from 'components/header/BackButton';
@@ -21,10 +22,9 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setCharge } from 'utils/redux/charge/actions';
 import { IClient } from 'utils/redux/types';
-import CurrencyInput from 'components/input/CurrencyInput';
 
 const PaymentScreen = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [concept, setConcept] = useState('');
   const [client, setClient] = useState<IClient>({
     name: '',
@@ -38,14 +38,25 @@ const PaymentScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
+  const setOnlyNumbers = (val: string) => {
+    let lastValid = amount;
+    const validNumber = new RegExp(/^\d*\.?\d*$/);
+    if (validNumber.test(val)) {
+      lastValid = val;
+    } else {
+      val = amount;
+    }
+    return setAmount(lastValid);
+  };
+
   const goToConfirmationScreen = () => {
     if (!amount || !concept || !client.id || !card.cardToken) {
       return Alert.alert('Error', 'Llenar todos los datos para continuar.');
     }
     dispatch(
       setCharge({
-        amount: amount / 100,
-        amountLabel: `US$ ${(amount / 100)
+        amount: parseFloat(amount),
+        amountLabel: `US$ ${parseFloat(amount)
           .toFixed(2)
           .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`,
         cardToken: card.cardToken,
@@ -64,23 +75,11 @@ const PaymentScreen = () => {
         alignment="center"
         leftButton={<BackButton />}
       />
-      <View style={styles.container}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          keyboardVerticalOffset={Platform.OS === 'ios' ? unit(40) : 0}>
-          <Text style={styles.label}>Monto</Text>
-          <CurrencyInput
-            max={10000000}
-            placeholder=""
-            onValueChange={setAmount}
-            value={amount}
-          />
-          <Text style={styles.label}>Concepto</Text>
-          <Input
-            placeholder="Escribe un concepto del cobro"
-            containerStyle={styles.input}
-            onChangeText={setConcept}
-          />
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? unit(40) : 0}>
+        <ScrollView style={styles.scrollContainer}>
           <Text style={styles.label}>Cliente</Text>
           <TouchableOpacity
             onPress={() => {
@@ -111,11 +110,28 @@ const PaymentScreen = () => {
               />
             </View>
           </TouchableOpacity>
-        </KeyboardAvoidingView>
+
+          <Text style={styles.label}>Monto</Text>
+          <Input
+            placeholder=""
+            value={amount}
+            currency="$"
+            onChangeText={setOnlyNumbers}
+            keyboardType="numeric"
+            containerStyle={styles.input}
+          />
+          <Text style={styles.label}>Concepto</Text>
+          <Input
+            placeholder="Escribe un concepto del cobro"
+            containerStyle={styles.input}
+            onChangeText={setConcept}
+          />
+        </ScrollView>
         <View style={styles.buttonContainer}>
           <Button title="Cobrar" onPress={goToConfirmationScreen} />
         </View>
-      </View>
+      </KeyboardAvoidingView>
+
       <ClientModal
         setClient={setClient}
         isVisible={isCliModalVisible}

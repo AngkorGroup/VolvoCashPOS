@@ -26,7 +26,6 @@ const TransfersScreen = () => {
     const payload = {
       amount: {
         value: chargeInfo.amount,
-        currency: 'USD',
       },
       description: chargeInfo.description,
       chargeType: 'FaceToFace',

@@ -65,7 +65,7 @@ const ConfirmationScreen = () => {
           amountLabel: res.amount.label,
           operationCode: res.operationCode || '',
           client: {
-            documentType: res.card.contact.documentType,
+            documentType: res.card.contact.documentType.abbreviation,
             documentNumber: res.card.contact.documentNumber,
             name: res.card.contact.fullName,
           },

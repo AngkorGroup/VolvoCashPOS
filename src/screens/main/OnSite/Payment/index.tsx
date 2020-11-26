@@ -13,18 +13,28 @@ import Button from 'components/button/Button';
 import { QR_SCREEN } from 'utils/routes';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Input from 'components/input/Input';
-import CurrencyInput from 'components/input/CurrencyInput';
 import { unit } from 'utils/responsive';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setCharge } from 'utils/redux/charge/actions';
 
 const PaymentScreen = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [concept, setConcept] = useState('');
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const setOnlyNumbers = (val: string) => {
+    let lastValid = amount;
+    const validNumber = new RegExp(/^\d*\.?\d*$/);
+    if (validNumber.test(val)) {
+      lastValid = val;
+    } else {
+      val = amount;
+    }
+    return setAmount(lastValid);
+  };
 
   const goToQRScreen = () => {
     if (!amount) {
@@ -32,7 +42,7 @@ const PaymentScreen = () => {
     }
     dispatch(
       setCharge({
-        amount,
+        amount: parseFloat(amount),
         description: concept,
       }),
     );
@@ -51,11 +61,13 @@ const PaymentScreen = () => {
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           keyboardVerticalOffset={Platform.OS === 'ios' ? unit(40) : 0}>
           <Text style={styles.label}>Monto</Text>
-          <CurrencyInput
-            max={10000000}
+          <Input
             placeholder=""
-            onValueChange={setAmount}
             value={amount}
+            currency="$"
+            onChangeText={setOnlyNumbers}
+            keyboardType="numeric"
+            containerStyle={styles.input}
           />
           <Text style={styles.label}>Concepto</Text>
           <Input

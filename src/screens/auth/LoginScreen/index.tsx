@@ -6,19 +6,22 @@ import {
   Platform,
   Alert,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { palette } from 'utils/styles';
 import Button from 'components/button/Button';
 import { unit } from 'utils/responsive';
-import styles from './styles';
+import styles from '../styles';
 import Input from 'components/input/Input';
 import { login, cleanError } from 'utils/redux/auth/actions';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getPushToken } from 'utils/redux/pushToken/reducer';
+import { useNavigation } from '@react-navigation/native';
 import { getError, getIsFetching } from 'utils/redux/auth/reducer';
+import { FORGOT_PASSWORD_SCREEN } from 'utils/routes';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -27,11 +30,16 @@ const LoginScreen = () => {
   const deviceToken: string = useSelector(getPushToken);
   const isFetching = useSelector(getIsFetching);
   const error = useSelector(getError);
+  const navigation = useNavigation();
 
   const validEmail = () => {
     return email.match(
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     );
+  };
+
+  const goToForgotPassword = () => {
+    navigation.navigate(FORGOT_PASSWORD_SCREEN);
   };
 
   const loginUser = () => {
@@ -91,7 +99,10 @@ const LoginScreen = () => {
               onChangeText={setPassword}
               secureTextEntry={true}
             />
-            <Text style={styles.text}>Olvidé mi contraseña</Text>
+            <View />
+            {/* <TouchableOpacity onPress={goToForgotPassword}>
+              <Text style={styles.text}>Olvidé mi contraseña</Text>
+            </TouchableOpacity> */}
           </KeyboardAvoidingView>
         </View>
         <View style={styles.buttonContainer}>

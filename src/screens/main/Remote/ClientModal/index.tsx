@@ -25,15 +25,14 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
   const [query, setQuery] = useState('');
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(false);
-  const [filteredMovements, setFilteredMovements] = useState<Contact[]>([]);
 
   const getContacts = () => {
+    const url = `contacts${query && `?query=${query}`}`;
     setLoading(true);
     api
-      .get('contacts')
+      .get(url)
       .then((res) => {
         setContacts(res);
-        setFilteredMovements(res);
         setLoading(false);
       })
       .catch((e) => {
@@ -43,16 +42,10 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
 
   useEffect(() => {
     getContacts();
-  }, []);
+  }, [query]);
 
   const handleChangeText = (text: string) => {
-    const searchText = text.toLocaleLowerCase();
     setQuery(text);
-    setFilteredMovements(
-      contacts.filter((contact) =>
-        contact.fullName.toLocaleLowerCase().includes(searchText),
-      ),
-    );
   };
 
   return (
@@ -72,19 +65,20 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
       ) : (
           <FlatList
             style-={styles.list}
-            data={filteredMovements}
+            data={contacts}
             keyExtractor={(movement) => movement.id.toString()}
             showsVerticalScrollIndicator={false}
             renderItem={({ item: client }) => (
               <ListItem
                 title={client.fullName}
-                subtitle={`${client.documentType}: ${client.documentNumber}`}
+                subtitle={`${client.documentType.abbreviation}: ${client.documentNumber}`}
                 onPress={() => {
                   setIsVisible(false);
+                  console.warn(client);
                   setClient({
                     id: client.id,
                     name: client.fullName,
-                    documentType: client.documentType,
+                    documentType: client.documentType.abbreviation,
                     documentNumber: client.documentNumber,
                   });
                 }}

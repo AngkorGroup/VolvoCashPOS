@@ -1,5 +1,6 @@
 export const LOGIN_STACK = 'LOGIN_STACK';
 export const LOGIN_SCREEN = 'LOGIN_SCREEN';
+export const FORGOT_PASSWORD_SCREEN = 'FORGOT_PASSWORD_SCREEN';
 
 export const HOME_SCREEN = 'HOME_SCREEN';
 export const APP_TAB = 'APP_TAB';
