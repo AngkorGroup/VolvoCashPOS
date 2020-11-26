@@ -9,10 +9,9 @@ export default StyleSheet.create({
     position: 'relative',
   },
   container: {
-    flex: 2,
-    justifyContent: 'space-between',
+    flex: 1,
     alignItems: 'center',
-    margin: unit(30),
+    padding: unit(30),
   },
   label: {
     fontWeight: '700',
@@ -27,8 +26,5 @@ export default StyleSheet.create({
     width: '100%',
     marginBottom: unit(20),
   },
-  buttonContainer: {
-    // position: 'absolute',
-    // bottom: unit(20),
-  },
+  scrollContainer: { flex: 1, width: '100%' },
 });

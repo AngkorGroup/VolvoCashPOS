@@ -34,6 +34,7 @@ export class Api {
       if (!token) {
         return this.headers;
       }
+
       return {
         ...this.headers,
         Authorization: `Bearer ${token}`,

@@ -25,8 +25,15 @@ const PaymentScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const setOnlyNumbers = (val: String) => {
-    return setAmount(val.replace(/[^\d,]+/, ''));
+  const setOnlyNumbers = (val: string) => {
+    let lastValid = amount;
+    const validNumber = new RegExp(/^\d*\.?\d*$/);
+    if (validNumber.test(val)) {
+      lastValid = val;
+    } else {
+      val = amount;
+    }
+    return setAmount(lastValid);
   };
 
   const goToQRScreen = () => {
@@ -35,7 +42,7 @@ const PaymentScreen = () => {
     }
     dispatch(
       setCharge({
-        amount: parseInt(amount, 10),
+        amount: parseFloat(amount),
         description: concept,
       }),
     );

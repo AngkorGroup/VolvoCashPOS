@@ -57,4 +57,11 @@ export default StyleSheet.create({
     paddingTop: unit(10),
     color: palette.ocean,
   },
+  forgetPassContainer: {
+    padding: 20,
+  },
+  forgetPassText: {
+    ...theme.medium,
+    // fontWeight: '700',
+  },
 });

@@ -44,6 +44,7 @@ export interface ChargeState {
   cardToken?: string;
   description: string;
   amount: number;
+  amountLabel?: string;
   operationCode?: string;
 }
 

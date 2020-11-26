@@ -1,13 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './LoginScreen';
-import * as routes from 'utils/routes';
+import ForgotPasswordScreen from './ForgotPasswordScreen';
+import { FORGOT_PASSWORD_SCREEN, LOGIN_SCREEN } from 'utils/routes';
 
 const LoginStack = createStackNavigator();
 
 const LoginNavigation = () => (
   <LoginStack.Navigator headerMode="none">
-    <LoginStack.Screen name={routes.LOGIN_SCREEN} component={LoginScreen} />
+    <LoginStack.Screen name={LOGIN_SCREEN} component={LoginScreen} />
+    <LoginStack.Screen
+      name={FORGOT_PASSWORD_SCREEN}
+      component={ForgotPasswordScreen}
+    />
   </LoginStack.Navigator>
 );
 

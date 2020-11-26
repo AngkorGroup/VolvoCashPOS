@@ -1,3 +1,7 @@
+interface IDocumentType {
+  abbreviation: string;
+}
+
 export type Contact = {
   id: number;
   firstName: string;
@@ -6,7 +10,7 @@ export type Contact = {
   type: string;
   phone: string;
   email: string;
-  documentType: string;
+  documentType: IDocumentType;
   documentNumber: string;
   status: string;
   clientId: number;

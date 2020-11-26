@@ -21,7 +21,6 @@ const ConfirmationScreen = () => {
       .post('charges', {
         amount: {
           value: chargeInfo.amount,
-          currency: 'USD',
         },
         description: chargeInfo.description,
         chargeType: 'Remote',
@@ -38,7 +37,8 @@ const ConfirmationScreen = () => {
           navigation.navigate(HOME_SCREEN);
         }, 1000);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         setLoading(false);
         return Alert.alert('Error', 'Tarjeta con saldo insuficiente');
       });

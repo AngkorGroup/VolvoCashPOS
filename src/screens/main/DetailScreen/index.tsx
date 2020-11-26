@@ -58,14 +58,14 @@ const ConfirmationScreen = () => {
     api
       .get(`charges/${chargeId}`)
       .then((res: Charge) => {
-        console.log('=====///>>', res);
         setChargeInfo({
           description: res.displayName,
           imageUrl: res.imageUrl,
           amount: res.amount.value,
+          amountLabel: res.amount.label,
           operationCode: res.operationCode || '',
           client: {
-            documentType: res.card.contact.documentType,
+            documentType: res.card.contact.documentType.abbreviation,
             documentNumber: res.card.contact.documentNumber,
             name: res.card.contact.fullName,
           },

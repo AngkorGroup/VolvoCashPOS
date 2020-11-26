@@ -55,7 +55,7 @@ const Input: React.FC<InputProps & TextInputProps & ViewStyle> = ({
   );
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     ...theme.surface,
     ...theme.shadow,

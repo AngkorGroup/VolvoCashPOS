@@ -14,6 +14,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { navigationRef, navigate } from './utils/navigation';
 import { CHARGE_DETAIL } from 'utils/routes';
+import { updateList } from 'utils/redux/updateList/actions';
 
 LogBox.ignoreLogs(['Sending onAnimatedValueUpdate']);
 
@@ -46,6 +47,7 @@ const App = () => {
   function onReceived(notification: any) {
     const push = notification.payload?.additionalData;
     if (push && push.chargeId) {
+      dispatch(updateList());
       dispatch(setChargeId(push.chargeId));
       navigate(CHARGE_DETAIL);
     }
