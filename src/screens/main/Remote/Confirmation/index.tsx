@@ -31,7 +31,7 @@ const ConfirmationScreen = () => {
           dispatch(updateList());
           setLoading(false);
           Alert.alert(
-            'Cobro exitoso',
+            'Cobro pendiente de confirmar por cliente',
             'Se ha generado el cobro correctamente.',
           );
           navigation.navigate(HOME_SCREEN);
