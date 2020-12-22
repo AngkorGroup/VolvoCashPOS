@@ -40,7 +40,7 @@ const getStyleByStatus = (status: Status) => {
 const getStatusLabel = (status: Status) => {
   switch (status) {
     case 'Pending':
-       return '⏳';
+      return '⏳';
     case 'Rejected':
     case 'Canceled':
       return '❌';
@@ -56,7 +56,7 @@ const ListItem: React.FC<ListItem> = ({
   value,
   mode,
   status = undefined,
-  onPress = () => { },
+  onPress = () => {},
 }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
@@ -68,10 +68,11 @@ const ListItem: React.FC<ListItem> = ({
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
       </View>
-      {status && status !== 'Accepted' &&
-      <View style={styles.iconContainer}>
-        <Text style={styles.icon}>{getStatusLabel(status)}</Text>
-      </View>}
+      {status && status !== 'Accepted' && (
+        <View style={styles.iconContainer}>
+          <Text style={styles.icon}>{getStatusLabel(status)}</Text>
+        </View>
+      )}
       <View style={styles.rightContainer}>
         <Text style={[styles[mode], styles.number]}>{value}</Text>
       </View>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     width: width * 0.6,
   },
-  iconContainer:{
+  iconContainer: {
     alignItems: 'flex-end',
     width: width * 0.08,
   },
@@ -146,8 +147,8 @@ const styles = StyleSheet.create({
   number: {
     fontSize: 13,
   },
-  icon:{
-    fontSize:9,
+  icon: {
+    fontSize: 9,
   },
   statusText: {
     color: 'white',
