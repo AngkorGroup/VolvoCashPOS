@@ -58,7 +58,7 @@ const Movements: React.FC<Movements> = ({ type, flag }) => {
     setQuery(text);
     setFilteredMovements(
       charges.filter((charge) =>
-        (charge.description || '-').toLocaleLowerCase().includes(searchText),
+        (charge.displayName || '-').toLocaleLowerCase().includes(searchText),
       ),
     );
   };
