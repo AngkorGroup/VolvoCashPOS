@@ -13,11 +13,12 @@ const width = Dimensions.get('window').width;
 
 interface ListItem {
   title: string;
-  subtitle: string;
+  client: string;
+  phone: string;
   onPress(): void;
 }
 
-const ListItem: React.FC<ListItem> = ({ title, subtitle, onPress }) => {
+const ListItem: React.FC<ListItem> = ({ title, client, phone, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <View>
@@ -25,7 +26,8 @@ const ListItem: React.FC<ListItem> = ({ title, subtitle, onPress }) => {
           <Text ellipsizeMode={'tail'} numberOfLines={1} style={styles.title}>
             {title}
           </Text>
-          <Text style={styles.subtitle}>{subtitle}</Text>
+          <Text style={styles.subtitle}>{client}</Text>
+          <Text style={styles.subtitle}>{phone}</Text>
         </View>
       </View>
     </TouchableOpacity>
