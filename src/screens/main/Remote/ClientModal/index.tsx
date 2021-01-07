@@ -71,7 +71,8 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
             renderItem={({ item: client }) => (
               <ListItem
                 title={client.fullName}
-                subtitle={`${client.documentType.abbreviation}: ${client.documentNumber}`}
+                phone={client.phone || '-'}
+                client={client.client.name || '-'}
                 onPress={() => {
                   setIsVisible(false);
                   console.warn(client);
