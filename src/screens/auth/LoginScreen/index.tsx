@@ -22,6 +22,7 @@ import { getPushToken } from 'utils/redux/pushToken/reducer';
 import { useNavigation } from '@react-navigation/native';
 import { getError, getIsFetching } from 'utils/redux/auth/reducer';
 import { FORGOT_PASSWORD_SCREEN } from 'utils/routes';
+import VersionNumber from 'react-native-version-number';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -31,6 +32,7 @@ const LoginScreen = () => {
   const isFetching = useSelector(getIsFetching);
   const error = useSelector(getError);
   const navigation = useNavigation();
+  let appVersion = `v${VersionNumber.appVersion} (${VersionNumber.buildVersion})`;
 
   const validEmail = () => {
     return email.match(
@@ -113,6 +115,7 @@ const LoginScreen = () => {
             }}
           />
         </View>
+        <Text style={styles.textVersion}>{appVersion}</Text>
       </SafeAreaView>
     </FastImage>
   );
