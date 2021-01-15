@@ -100,9 +100,9 @@ const LoginScreen = () => {
               secureTextEntry={true}
             />
             <View />
-            {/* <TouchableOpacity onPress={goToForgotPassword}>
+            <TouchableOpacity onPress={goToForgotPassword}>
               <Text style={styles.text}>Olvidé mi contraseña</Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </KeyboardAvoidingView>
         </View>
         <View style={styles.buttonContainer}>

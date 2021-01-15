@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'components/button/Button';
 import ListItem from 'components/card/ListItem';
-import ExitButton from 'components/header/ExitButton';
 import Header from 'components/header/Header';
 import Icon from 'components/icon/Icon';
 import Search from 'components/input/Search';
 import { View, RefreshControl } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './styles';
 import { unit } from 'utils/responsive';
-import { ON_SITE_STACK, REMOTE_STACK, CHARGE_DETAIL } from 'utils/routes';
+import {
+  ON_SITE_STACK,
+  REMOTE_STACK,
+  CHARGE_DETAIL,
+  SETTINGS_PROFILE_SCREEN
+} from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 import { api } from 'utils/api';
 import { Charge } from 'models/Charge';
@@ -118,13 +122,19 @@ const CardDetailScreen = () => {
   getUserName().then((res) => {
     setUser(res || '-');
   });
+  const goToSettingsProfile = () => {
+    navigation.navigate(SETTINGS_PROFILE_SCREEN);
+  };
 
   return (
     <View style={styles.container}>
       <Header
         title={`Bienvenido, ${user || '-'}`}
         alignment="center"
-        rightButton={<ExitButton />}
+        rightButton=
+        {<TouchableOpacity onPress={goToSettingsProfile}>
+          <Icon family="SimpleLineIcons" name="settings" />
+        </TouchableOpacity>}
       />
       <View style={styles.infoContainer}>
         <Button
