@@ -75,10 +75,10 @@ const Clients: React.FC<IClients> = ({ setClient, setIsVisible }) => {
                 client={client.client.name || '-'}
                 onPress={() => {
                   setIsVisible(false);
-                  console.warn(client);
                   setClient({
                     id: client.id,
-                    name: client.fullName,
+                    displayName: `Remoto: ${client.client?.ruc} ${client.client?.name} - ${client.fullName}`,
+                    name: `${client.client?.name} - ${client.fullName}`,
                     documentType: client.documentType.abbreviation,
                     documentNumber: client.documentNumber,
                   });

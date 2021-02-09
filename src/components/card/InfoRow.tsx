@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   value: {
     ...theme.primary,
-    ...theme.mediumLight,
+    ...theme.surface,
   },
   row: {
     flexDirection: 'row',

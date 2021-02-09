@@ -56,7 +56,7 @@ const ListItem: React.FC<ListItem> = ({
   value,
   mode,
   status = undefined,
-  onPress = () => {},
+  onPress = () => { },
 }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   leftContainer: {
     alignSelf: 'flex-start',
-    width: width * 0.6,
+    width: width * 0.5,
   },
   iconContainer: {
     alignItems: 'flex-end',
