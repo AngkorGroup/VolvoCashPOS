@@ -20,6 +20,7 @@ import { unit } from 'utils/responsive';
 import { REMOTE_CONFIRMATION_SCREEN } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
+import { getCurrentDate, getCurrentHour } from 'utils/moment';
 import { setCharge } from 'utils/redux/charge/actions';
 import { IClient } from 'utils/redux/types';
 
@@ -56,6 +57,9 @@ const PaymentScreen = () => {
     dispatch(
       setCharge({
         amount: parseFloat(amount),
+        displayName: client.displayName,
+        date: getCurrentDate(),
+        hour: getCurrentHour(),
         amountLabel: `US$ ${parseFloat(amount)
           .toFixed(2)
           .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`,
@@ -89,6 +93,7 @@ const PaymentScreen = () => {
               <Input
                 placeholder="Seleccione un cliente"
                 value={client.name}
+                multiline={true}
                 onChangeText={() => { }}
                 containerStyle={styles.input}
               />
