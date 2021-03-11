@@ -17,7 +17,9 @@ export default StyleSheet.create({
   },
   buttonsContainer: {
     alignItems: 'center',
-    marginTop: unit(100),
+    justifyContent: 'center',
+    marginBottom: unit(70),
+    flex: 2,
   },
   button: {
     marginVertical: unit(5),
@@ -28,4 +30,5 @@ export default StyleSheet.create({
   amountRow: {
     fontWeight: '700',
   },
+  scrollContainer: { width: '100%' },
 });

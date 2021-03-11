@@ -82,7 +82,7 @@ const PaymentScreen = () => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? unit(40) : 0}>
+        keyboardVerticalOffset={Platform.OS === 'ios' ? unit(5) : 0}>
         <ScrollView style={styles.scrollContainer}>
           <Text style={styles.label}>Cliente</Text>
           <TouchableOpacity

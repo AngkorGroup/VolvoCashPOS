@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CloseButton from 'components/header/CloseButton';
 import Header from 'components/header/Header';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, ScrollView } from 'react-native';
 import styles from './styles';
 import Button from 'components/button/Button';
 import ShareButton from 'components/button/Share';
@@ -55,47 +55,54 @@ const DetailScreen: React.FC<IDetail> = ({
         />
       ) : (
           <View style={styles.card}>
-            {Boolean(chargeInfo.operationCode) && (
-              <InfoRow label="Operación" value={`${chargeInfo.operationCode}`} />
-            )}
-            <InfoRow
-              textStyle={styles.amountRow}
-              label="Monto"
-              value={chargeInfo.amountLabel}
-            />
-            <InfoRow label="Concepto" value={chargeInfo.displayName || '-'} />
-            <InfoRow label="Observación" value={chargeInfo.description} />
-            <InfoRow label="Cajero" value={user} />
-            <InfoRow label="Fecha" value={chargeInfo.date || getCurrentDate()} />
-            <InfoRow label="Hora" value={chargeInfo.hour || getCurrentHour()} />
-
-            {buttons.share && chargeInfo.imageUrl && (
-              <View style={styles.shareContainer}>
-                <ShareButton
-                  onPress={() => handleSharePress(chargeInfo.imageUrl)}
+            <ScrollView style={styles.scrollContainer}>
+              {Boolean(chargeInfo.operationCode) && (
+                <InfoRow
+                  label="Operación"
+                  value={`${chargeInfo.operationCode}`}
                 />
+              )}
+              <InfoRow
+                textStyle={styles.amountRow}
+                label="Monto"
+                value={chargeInfo.amountLabel}
+              />
+              <InfoRow label="Concepto" value={chargeInfo.displayName || '-'} />
+              <InfoRow label="Observación" value={chargeInfo.description} />
+              <InfoRow label="Cajero" value={user} />
+              <InfoRow
+                label="Fecha"
+                value={chargeInfo.date || getCurrentDate()}
+              />
+              <InfoRow label="Hora" value={chargeInfo.hour || getCurrentHour()} />
+
+              <View style={styles.buttonsContainer}>
+                {buttons.share && chargeInfo.imageUrl && (
+                  <View style={styles.shareContainer}>
+                    <ShareButton
+                      onPress={() => handleSharePress(chargeInfo.imageUrl)}
+                    />
+                  </View>
+                )}
+                {buttons.cancel && (
+                  <Button
+                    title="Rechazar"
+                    textStyle={theme.red}
+                    style={styles.button}
+                    onPress={() => {
+                      onCancel();
+                    }}
+                  />
+                )}
+                {buttons.confirm && (
+                  <Button
+                    title="Confirmar"
+                    style={styles.button}
+                    onPress={() => onConfirm()}
+                  />
+                )}
               </View>
-            )}
-
-            <View style={styles.buttonsContainer}>
-              {buttons.cancel && (
-                <Button
-                  title="Rechazar"
-                  textStyle={theme.red}
-                  style={styles.button}
-                  onPress={() => {
-                    onCancel();
-                  }}
-                />
-              )}
-              {buttons.confirm && (
-                <Button
-                  title="Confirmar"
-                  style={styles.button}
-                  onPress={() => onConfirm()}
-                />
-              )}
-            </View>
+            </ScrollView>
           </View>
         )}
     </View>
