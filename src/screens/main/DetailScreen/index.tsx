@@ -5,6 +5,7 @@ import { getChargeId } from 'utils/redux/chargeId/reducer';
 import { ChargeState } from 'utils/redux/types';
 import Details from 'components/detail';
 import { api } from 'utils/api';
+import { formatDate, formatHour } from 'utils/moment';
 import { HOME_SCREEN } from 'utils/routes';
 import { useNavigation } from '@react-navigation/native';
 import { Charge } from 'utils/redux/types';
@@ -59,10 +60,13 @@ const ConfirmationScreen = () => {
       .get(`charges/${chargeId}`)
       .then((res: Charge) => {
         setChargeInfo({
-          description: res.displayName,
+          description: res.description || '',
+          displayName: res.displayName || '',
           imageUrl: res.imageUrl,
           amount: res.amount.value,
           amountLabel: res.amount.label,
+          hour: formatHour(res.createdAt),
+          date: formatDate(res.createdAt),
           operationCode: res.operationCode || '',
           client: {
             documentType: res.card.contact.documentType.abbreviation,

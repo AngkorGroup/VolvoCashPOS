@@ -46,7 +46,6 @@ const Input: React.FC<InputProps & TextInputProps & ViewStyle> = ({
       {currency && <Text style={styles.inputMargin}>{currency}</Text>}
       <TextInput
         style={inputStyles}
-        numberOfLines={1}
         placeholder={placeholder}
         placeholderTextColor={theme.secondary.color}
         {...props}
@@ -59,7 +58,7 @@ export const styles = StyleSheet.create({
   container: {
     ...theme.surface,
     ...theme.shadow,
-    height: unit(30),
+    height: unit(40),
     padding: unit(5),
     justifyContent: 'center',
     alignItems: 'center',
@@ -76,7 +75,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: unit(30),
+    height: unit(40),
     padding: 0,
     ...theme.small,
     ...theme.primary,
