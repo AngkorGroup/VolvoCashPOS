@@ -46,8 +46,6 @@ const Input: React.FC<InputProps & TextInputProps & ViewStyle> = ({
       {currency && <Text style={styles.inputMargin}>{currency}</Text>}
       <TextInput
         style={inputStyles}
-        // numberOfLines={2}
-        // multiline={true}
         placeholder={placeholder}
         placeholderTextColor={theme.secondary.color}
         {...props}

@@ -93,7 +93,6 @@ const PaymentScreen = () => {
               <Input
                 placeholder="Seleccione un cliente"
                 value={client.name}
-                multiline={true}
                 onChangeText={() => { }}
                 containerStyle={styles.input}
               />
