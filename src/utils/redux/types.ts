@@ -76,6 +76,10 @@ export interface PushTokenState {
   token: string;
 }
 
+export interface ForgetPasswordState {
+  email: string;
+}
+
 export interface UpdateListState {
   flag: boolean;
 }

@@ -86,7 +86,7 @@ const DetailScreen: React.FC<IDetail> = ({
                 )}
                 {buttons.cancel && (
                   <Button
-                    title="Rechazar"
+                    title="Cancelar"
                     textStyle={theme.red}
                     style={styles.button}
                     onPress={() => {
