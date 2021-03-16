@@ -20,7 +20,7 @@ export default StyleSheet.create({
     },
     containerInput: {
         justifyContent: 'space-around',
-        height: height * 0.13,
+        height: height * 0.3,
     },
     text: {
         ...theme.small,

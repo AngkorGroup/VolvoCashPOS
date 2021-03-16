@@ -22,6 +22,7 @@ import { getPushToken } from 'utils/redux/pushToken/reducer';
 import { useNavigation } from '@react-navigation/native';
 import { getError, getIsFetching } from 'utils/redux/auth/reducer';
 import { FORGOT_PASSWORD_SCREEN } from 'utils/routes';
+import { validEmail } from 'utils/valid-email';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -32,18 +33,12 @@ const LoginScreen = () => {
   const error = useSelector(getError);
   const navigation = useNavigation();
 
-  const validEmail = () => {
-    return email.match(
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    );
-  };
-
   const goToForgotPassword = () => {
     navigation.navigate(FORGOT_PASSWORD_SCREEN);
   };
 
   const loginUser = () => {
-    if (!validEmail()) {
+    if (!validEmail(email)) {
       return Alert.alert('Error', 'Correo inválido.');
     }
 
