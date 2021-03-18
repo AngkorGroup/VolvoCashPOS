@@ -57,7 +57,7 @@ const ProfileScreen = () => {
             <Icon style={styles.icon} family="SimpleLineIcons" name="lock" />
             <Text>Cambiar contraseña</Text>
           </TouchableOpacity>
-          <TouchableOpacity>{<ExitButton />}</TouchableOpacity>
+          <ExitButton />
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>

@@ -8,7 +8,7 @@ const initialState = {
   email: '',
 };
 
-export const getPushTo = (state: RootState) => selectEmail(state).email;
+export const getEmail = (state: RootState) => selectEmail(state).email;
 
 export default function chargeReducer(
   state: ForgetPasswordState = initialState,

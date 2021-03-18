@@ -18,6 +18,8 @@ import Alert from 'components/alert/Alert';
 import BackButton from 'components/header/BackButton';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+import { useSelector } from 'react-redux';
+import { getEmail } from 'utils/redux/forgetPass/reducer';
 
 const ChangePasswordScreen = () => {
   const navigation = useNavigation();
@@ -27,6 +29,8 @@ const ChangePasswordScreen = () => {
   const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
+  const email: string = useSelector(getEmail);
+  // console.log('+++email', email);
   const changePassword = () => {
     if (!newPass || !newPassRepeat) {
       setAlertMessage('Llenar ambos campos para continuar.');
@@ -43,7 +47,7 @@ const ChangePasswordScreen = () => {
       .post('forgot_password', {
         password: newPass,
         code,
-        email: 'rodriguez.marcomc@gmail.com',
+        email: email.toLocaleLowerCase(),
       })
       .then(() => {
         setLoading(false);
@@ -87,6 +91,7 @@ const ChangePasswordScreen = () => {
               keyboardType="default"
               iconFamily="SimpleLineIcons"
               iconName="lock"
+              secureTextEntry={true}
             />
             <ShortInput
               onChangeText={setNewPassRepeat}
@@ -94,6 +99,7 @@ const ChangePasswordScreen = () => {
               keyboardType="default"
               iconFamily="SimpleLineIcons"
               iconName="lock"
+              secureTextEntry={true}
             />
           </View>
         </View>
