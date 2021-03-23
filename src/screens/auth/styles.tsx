@@ -64,4 +64,9 @@ export default StyleSheet.create({
     ...theme.medium,
     // fontWeight: '700',
   },
+  textVersion: {
+    paddingTop: unit(15),
+    textAlign: 'center',
+    ...theme.primaryOverDark,
+  },
 });
