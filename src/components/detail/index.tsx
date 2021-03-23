@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CloseButton from 'components/header/CloseButton';
 import Header from 'components/header/Header';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, ScrollView } from 'react-native';
 import styles from './styles';
 import Button from 'components/button/Button';
 import ShareButton from 'components/button/Share';
 import InfoRow from 'components/card/InfoRow';
-import { theme } from 'utils/styles';
-import { palette } from 'utils/styles';
+import { theme, palette } from 'utils/styles';
+import { getCurrentDate, getCurrentHour } from 'utils/moment';
 import { ChargeState } from 'utils/redux/types';
+import { getUserName } from 'utils/storage';
 
 interface IButtons {
   cancel: boolean;
@@ -35,6 +36,14 @@ const DetailScreen: React.FC<IDetail> = ({
   buttons,
   handleSharePress = () => { },
 }) => {
+  const [user, setUser] = useState('-');
+
+  useEffect(() => {
+    getUserName().then((res) => {
+      setUser(res || '-');
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <Header title={header} alignment="center" rightButton={<CloseButton />} />
@@ -46,50 +55,54 @@ const DetailScreen: React.FC<IDetail> = ({
         />
       ) : (
           <View style={styles.card}>
-            {Boolean(chargeInfo.operationCode) && (
-              <InfoRow label="Operación" value={`${chargeInfo.operationCode}`} />
-            )}
-            <InfoRow
-              label="Cliente"
-              value={chargeInfo.client ? chargeInfo.client.name : '-'}
-            />
-            <InfoRow
-              label={chargeInfo.client ? chargeInfo.client.documentType : '-'}
-              value={chargeInfo.client?.documentNumber || '-'}
-            />
-            <InfoRow label="Concepto" value={chargeInfo.description} />
-            <InfoRow
-              textStyle={styles.amountRow}
-              label="Monto"
-              value={chargeInfo.amountLabel}
-            />
-            {buttons.share && chargeInfo.imageUrl && (
-              <View style={styles.shareContainer}>
-                <ShareButton
-                  onPress={() => handleSharePress(chargeInfo.imageUrl)}
+            <ScrollView style={styles.scrollContainer}>
+              {Boolean(chargeInfo.operationCode) && (
+                <InfoRow
+                  label="Operación"
+                  value={`${chargeInfo.operationCode}`}
                 />
-              </View>
-            )}
+              )}
+              <InfoRow
+                textStyle={styles.amountRow}
+                label="Monto"
+                value={chargeInfo.amountLabel}
+              />
+              <InfoRow label="Concepto" value={chargeInfo.displayName || '-'} />
+              <InfoRow label="Observación" value={chargeInfo.description} />
+              <InfoRow label="Cajero" value={user} />
+              <InfoRow
+                label="Fecha"
+                value={chargeInfo.date || getCurrentDate()}
+              />
+              <InfoRow label="Hora" value={chargeInfo.hour || getCurrentHour()} />
 
-            <View style={styles.buttonsContainer}>
-              {buttons.cancel && (
-                <Button
-                  title="Rechazar"
-                  textStyle={theme.red}
-                  style={styles.button}
-                  onPress={() => {
-                    onCancel();
-                  }}
-                />
-              )}
-              {buttons.confirm && (
-                <Button
-                  title="Confirmar"
-                  style={styles.button}
-                  onPress={() => onConfirm()}
-                />
-              )}
-            </View>
+              <View style={styles.buttonsContainer}>
+                {buttons.share && chargeInfo.imageUrl && (
+                  <View style={styles.shareContainer}>
+                    <ShareButton
+                      onPress={() => handleSharePress(chargeInfo.imageUrl)}
+                    />
+                  </View>
+                )}
+                {buttons.cancel && (
+                  <Button
+                    title="Cancelar"
+                    textStyle={theme.red}
+                    style={styles.button}
+                    onPress={() => {
+                      onCancel();
+                    }}
+                  />
+                )}
+                {buttons.confirm && (
+                  <Button
+                    title="Confirmar"
+                    style={styles.button}
+                    onPress={() => onConfirm()}
+                  />
+                )}
+              </View>
+            </ScrollView>
           </View>
         )}
     </View>

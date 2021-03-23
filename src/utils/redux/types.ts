@@ -35,6 +35,7 @@ export type Auth = {
 export interface IClient {
   documentType: string;
   documentNumber?: string;
+  displayName?: string;
   name: string;
   id?: number;
 }
@@ -42,7 +43,10 @@ export interface ChargeState {
   imageUrl?: string;
   client?: IClient;
   cardToken?: string;
+  date?: string;
+  hour?: string;
   description: string;
+  displayName?: string;
   amount: number;
   amountLabel?: string;
   operationCode?: string;
@@ -70,6 +74,10 @@ export interface Charge {
 
 export interface PushTokenState {
   token: string;
+}
+
+export interface ForgetPasswordState {
+  email: string;
 }
 
 export interface UpdateListState {

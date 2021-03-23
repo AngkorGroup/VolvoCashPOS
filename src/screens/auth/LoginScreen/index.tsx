@@ -23,6 +23,7 @@ import { useNavigation } from '@react-navigation/native';
 import { getError, getIsFetching } from 'utils/redux/auth/reducer';
 import { FORGOT_PASSWORD_SCREEN } from 'utils/routes';
 import VersionNumber from 'react-native-version-number';
+import { validEmail } from 'utils/valid-email';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -34,18 +35,12 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   let appVersion = `v${VersionNumber.appVersion} (${VersionNumber.buildVersion})`;
 
-  const validEmail = () => {
-    return email.match(
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    );
-  };
-
   const goToForgotPassword = () => {
     navigation.navigate(FORGOT_PASSWORD_SCREEN);
   };
 
   const loginUser = () => {
-    if (!validEmail()) {
+    if (!validEmail(email)) {
       return Alert.alert('Error', 'Correo inválido.');
     }
 
@@ -102,9 +97,9 @@ const LoginScreen = () => {
               secureTextEntry={true}
             />
             <View />
-            {/* <TouchableOpacity onPress={goToForgotPassword}>
+            <TouchableOpacity onPress={goToForgotPassword}>
               <Text style={styles.text}>Olvidé mi contraseña</Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </KeyboardAvoidingView>
         </View>
         <View style={styles.buttonContainer}>

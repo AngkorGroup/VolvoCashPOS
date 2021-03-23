@@ -20,5 +20,12 @@ moment.updateLocale('es', {
   ],
 });
 
+export const getCurrentDate = () => moment().format('DD/MM/YYYY');
+
+export const getCurrentHour = () => moment().format('hh:mm a');
+
 export const formatDate = (date: string | Date) =>
-  moment(date).format('D MMM YYYY, hh:mm a');
+  moment(date, 'D MMM YYYY, hh:mm a').format('DD/MM/YYYY');
+
+export const formatHour = (date: string | Date) =>
+  moment(date, 'D MMM YYYY, hh:mm a').format('hh:mm a');

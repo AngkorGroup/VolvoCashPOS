@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { theme } from 'utils/styles';
 import { unit } from 'utils/responsive';
+
+const height = Dimensions.get('window').height;
 
 export default StyleSheet.create({
   safeContainer: {
@@ -15,6 +17,10 @@ export default StyleSheet.create({
   },
   container: {
     alignItems: 'center',
+  },
+  containerInput: {
+    justifyContent: 'space-around',
+    height: height * 0.2,
   },
   text: {
     ...theme.small,
